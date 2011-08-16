@@ -1,0 +1,4 @@
+h1. SWS Weblog
+
+A very simple static weblog, using Javascript to look dynamic.
+
