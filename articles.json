@@ -6,5 +6,9 @@
     "1313502302": {
         "title": "test article again",
         "tags": ["foo", "baz"]
+    },
+    "1315202798": {
+        "title": "Hallo Welt!",
+        "tags": ["firstOne", "life", "programming", "meta", "Deutsche Bahn", "travel", "foo"]
     }
 }

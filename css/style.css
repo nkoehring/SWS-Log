@@ -1,0 +1,76 @@
+body {
+  font: 16px/22px "Helvetica Neue", Arial, sans-serif;
+  margin: 2em 2.3em;
+  color: #333;
+  background-color: #FAFAFA;
+  width: 960px;
+  margin: auto
+}
+header {
+  position: relative;
+  display: block;
+  padding: 6px 20px;
+  background: #888;
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD));
+  background: -moz-linear-gradient(top, #FFF, #DDD);
+}
+header menu {
+  position: absolute;
+  bottom: -15px;
+  right: 20px;
+  font-size: 0.9em;
+  line-height: 1.1em;
+}
+header menu li {
+  display: inline-block;
+  padding: 2px 5px;
+  background: #EEE;
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD));
+  background: -moz-linear-gradient(top, #FFF, #DDD);
+  text-align: center;
+}
+header menu li:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DAA));
+  background: -moz-linear-gradient(top, #FFF, #DAA);
+}
+header menu li:hover .effect_dummy {
+  margin-top: 0px;
+  color: inherit;
+}
+
+menu#tags {
+  display: block;
+  text-align: right;
+  word-spacing: -0.25em;
+}
+menu#tags:before {
+  content: "tags:";
+  color: #AAA;
+  font-weight: bold;
+  font-size: 2em;
+}
+menu#tags li {
+  display: inline;
+  margin: 0 0.2em;
+}
+
+h1 { display: block; font-size: 1.5em; border-bottom: 1px solid #AAA; }
+h2 {
+  display: block;
+  font-size: 1.0em;
+  border-bottom: 1px solid #AAA;
+}
+h3 { font-size: 1.1em; font-weight: bold; }
+a { color: #444; text-decoration: none; }
+a:visited { color: #777; }
+a:hover { color: #777; }
+
+.effect_dummy {
+  margin-top: -16px;
+  color: transparent;
+  transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+}
+

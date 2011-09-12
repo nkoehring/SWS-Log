@@ -12,35 +12,28 @@
     <meta name="geo.region" content="DE" />
 
     <link rel="author" href="mailto:me@nkoehring.de" />
+    <link rel="stylesheet" href="/css/style.css" />
     <script src="/js/jquery.min.js"></script>
     <script src="/js/sammy.js"></script>
     <script src="/js/textile.js"></script>
     <script src="/js/weblog.js"></script>
-    <style type="text/css">
-      body {
-        font: 17pt/22pt "Helvetica Neue", Arial, sans-serif;
-        margin: 2em 2.3em;
-        color: #AAA;
-        background-color: #333;
-        width: 960px;
-        margin: auto
-      }
-      header { display: block; padding: 0.25em 1em; background: #666; }
-      h1 { display: block; font-size: 1.5em; border-bottom: 1px solid #AAA; }
-      h2 {
-        display: block;
-        font-size: 1.0em;
-        border-bottom: 1px solid #AAA;
-      }
-      a { color: #DDD; text-decoration: none; }
-      a:visited { color: #777; }
-      a:hover { color: #FFF; }
-    </style>
   </head>
     <body>
       <header>
         <h2>Welcome.</h2>
+        <menu>
+          <li>
+            <a href="#/about">about</a>
+            <div class="effect_dummy">über mich</div>
+          </li>
+          <li>
+            <a href="http://koehr.in" target="_blank">koehr.in</a>
+            <div class="effect_dummy">Meine Homepage</div>
+          </li>
+        </menu>
       </header>
+      <menu id="tags">
+      </menu>
       <div id="content"></div>
     </body>
 </html>

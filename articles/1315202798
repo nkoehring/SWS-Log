@@ -1,0 +1,34 @@
+Ich weiß schon, warum ich es schon in meiner Jugend liebte, sehr früh unterwegs zu sein und dabei
+durch verschiedene Bahnhöfe zu reisen. Es ist, wie der Welt beim Aufwachen zuzusehen. Diesem
+wunderschönen Antlitz, so friedlich und doch geschäftig. Wie könnte man seinen Tag besser beginnen?
+
+Unterwegs bin ich nun schon seit kurz vor sechs Uhr. Ich sitze in einem ICE und bin auf dem Weg nach
+Österreich. Ich empfehle übrigens hiermit jedem, der sich für soetwas begeistern kann, einmal mit dem
+Zug durch Jena zu fahren und die Stadt aus diesem Winkel zu betrachten. Ein seltsamer, aber
+ansprechender Flickenteppich aus verschiedensten Gebäuden, die sich wie ein Kneuel aus
+verschiedensten Tieren zusammenschmiegen.
+
+So und nun zum eigentlichen Thema: Dies ist mein neuer Blog. „Was, schon wieder?“, wird vielleicht
+der eine oder andere denken: Ja, schon wieder. Aber dieses mal werde ich zusehen, dass ich alle
+anderen Blogbeiträge von früher mit einpflege. Sonst sehe ich irgendwann selbst nicht mehr durch
+dieses Wirrwarr.
+
+h3. Für das technisch interessierte Publikum:
+
+Dieses Weblog ist komplett statisch auf Serverseite. Dynamik wird mit Javascript auf der Client-Seite
+erreicht. Die Artikel liegen in einzelnen Dateien vor, die unter "/articles.json":/articles.json
+gelistet sind.
+
+Für den Programmier-Komfort verwende ich "jQuery":http://jquery.com und "sammyjs":http://sammyjs.org,
+werde aber vielleicht auf ein "Ender":https://ender.no.de Paket umsteigen, in dem dann bereits
+genanntes sammyjs mit "reqwest":https://github.com/ded/reqwest, "qwery":https://github.com/ded/qwery
+und "domready":https://github.com/ded/domready zusammenspielt.
+
+Wärend des Schreibens kommt mir außerdem der Gedanke, dass ich das bisher verwendete textile.js, von
+dem ich den Link gerade verschlampt habe, evtl einfach direkt mit HAML ersetze. Das würde zwar einen
+zusätzlichen Renderschritt bedeuten, aber dafür auch bessere Unterstützung eben für
+"Textile":http://textile.org.
+
+Nun denn. Mein viel zu teures Croissant-Frühstück ist gerade gekommen. Bei den Preisen fragt man sich
+doch manchmal, wieso die Bahn nicht auch in der zweiten Klasse verstellbare Ledersitze hat.
+
