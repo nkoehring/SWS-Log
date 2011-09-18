@@ -40,7 +40,9 @@
 
       if (!cntxt.articles) {
         cntxt.load('/articles.json').then(function(data) {
-          cntxt.articles = data;
+          console.log(data);
+          cntxt.articles = data.articles;
+          cntxt.options = data.options;
           setIndex();
           createTagCloud();
         }).then(callback);
@@ -56,8 +58,7 @@
 
       this.load('/articles/'+a_id).then(function(article) {
         $('[id$=_content]').hide();
-        article = article.replace("\n", " ");
-        rendered_article = textile(article);
+        rendered_article = convert(article);
         $('#'+a_id+'_content').html(rendered_article).slideDown();
         $('body').scrollTop($('#'+a_id).offset().top);
       });

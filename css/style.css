@@ -1,5 +1,7 @@
 body {
-  font: 16px/22px "Helvetica Neue", Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font: 16px/22px 'Antic', 'Consolas', 'Helvetica Neue', Arial, sans-serif;
   margin: 2em 2.3em;
   color: #333;
   background-color: #FAFAFA;
@@ -16,7 +18,7 @@ header {
 }
 header menu {
   position: absolute;
-  bottom: -15px;
+  bottom: -12px;
   right: 20px;
   font-size: 0.9em;
   line-height: 1.1em;
@@ -57,13 +59,18 @@ menu#tags li {
 h1 { display: block; font-size: 1.5em; border-bottom: 1px solid #AAA; }
 h2 {
   display: block;
-  font-size: 1.0em;
-  border-bottom: 1px solid #AAA;
+  font-size: 1.2em;
+  margin-top: 2em;
+  margin-bottom: 0;
 }
 h3 { font-size: 1.1em; font-weight: bold; }
 a { color: #444; text-decoration: none; }
 a:visited { color: #777; }
 a:hover { color: #777; }
+
+article {
+  border-bottom: 1px solid #AAA;
+}
 
 .effect_dummy {
   margin-top: -16px;
@@ -73,4 +80,4 @@ a:hover { color: #777; }
   -webkit-transition: all 0.5s ease-out;
   -o-transition: all 0.5s ease-out;
 }
-
+#development_info { margin-top: 3em; }
