@@ -1,0 +1,66 @@
+Na ob das klappt… ich weiß es nicht. Aber generell habe ich gute Hoffnung.
+
+Ich habe "Citadel":http://citadel.org auf meinem Webserver installiert. Citadel/UX ist eine irgendwie
+schon "immer":http://en.wikipedia.org/wiki/Citadel/UX existierende Groupware, die Mail, Jabber,
+Kalender, Kontakte, Todos und alles, was man sonst für die Kollaboration benötigt einfach mitbringt.
+
+Eine kleine Hürde für mich war, dass Citadel bei der Installation unter Debian meine alten
+Email-Sachen ersetzten würde. Das heißt: Exim4 und Dovecot würden deinstalliert. Wäre das nicht der
+Fall gewesen, hätte ich Citadel viel früher probiert, so aber musste ich auf einen Zeitpunkt warten,
+an dem ich für ein paar Stunden mal auf Mail verzichten konnte.
+
+Nun ist der Zeitpunkt ja da und Citadel läuft auch schon. Die Installation und das grundlegende
+Einrichten war so dermaßen einfach, dass es dazu kaum etwas sagen brauch. Bei der Installation (unter
+Debian zumindest) ploppt ein Wizard hoch, der ein paar Einstellungen abfragt. Da sind zB der Port,
+auf dem das Webinterface laufen soll und der initiale Benutzername. Man kann Citadel auch PAM
+benutzen lassen, so dass die Systembenutzer des Servers direkt zur Anmeldung benutzt werden können
+(und müssen!).
+
+Ich habe nun Citadels eigene Benutzerverwaltung gewählt. Wählt man als eigenen Nutzer den gleichen
+Benutzernamen, wie man unter zB Dovecot zum Empfangen der Mails nutze, funktioniert danach eigentlich
+alles schon wieder, wie vorher. Citadel übernimmt nämlich die Daten direkt aus der /etc/aliases.
+
+Macht man das nicht – wie ich zB – scheint der einfachste Weg zu sein, die Einstellungen in
+/etc/citadel/mail.aliases entsprechend anzupassen. Einfach den alten Benutzernamen mit dem neuen
+ersetzen und Citadel neustarten (geht ganz einfach über das Webinterface).
+
+Interessant wirds dann, wenn man die alten Mails gern zu Citadel übertragen möchte. Einfach geht es
+vorallem, wenn der alte IMAP-Server noch läuft. Tut er aber bei mir schon lang nicht mehr. Nach ein
+wenig recherche "fand sich aber ein
+Leidensgenosse":http://wiki.colar.net/ruby_script_to_upload_convert_a_maildir_inbox_to_an_imap_server
+und seine Lösung, das lokale Maildir zum IMAP-Server von Citadel zu übertragen.
+
+Ob und wenn ja wie gut es klappt, schreib ich gleich…
+
+So… der Test lief fehlerfrei durch, das eigentliche Übertragen wollte aber auf Grund einer
+Kleinigkeit im Script nicht funktionieren. Es kommt ein "habe Datei soundso nicht gefunden", bei dem
+schnell auffällt, dass man bei der Angabe des Maildir-Pfades einen abschließenden Shlash schreiben
+sollte. Nun überträgt er und ich hibbel ein wenig rum.
+
+Hibbel.
+
+Puh, das dauert… bisher gibts (man kann ja nebenbei schon in Citadel gucken) 154 übertragene
+Nachrichten. Ich hibbel also noch eine ganze Ecke weiter.
+
+Weil ich ja nun Zeit habe, schaue ich mir nach langem mal wieder "ditz":http://ditz.rubyforge.org/
+an. Das ist ein Kommandozeilenwerkzeug zur verteilten Sammeln von Tickets. Also zu normalnerd: ein
+distributed "issue tracker":http://de.wikipedia.org/wiki/Issue-Tracking-System.
+
+Mit Ruby1.9 wollte es erstmal nur Fehlermeldungen werfen, aber unter Ruby1.8 funktioniert es
+scheinbar sehr gut.
+
+Ditz arbeitet mit GIT zusammen und kann irgendwie alles, was man von einem Issue Tracker so verlangt
+(und einiges mehr, wie es scheint). Zum Beispiel konfrontiert einen der Setup-Assistent recht schnell
+mit der Frage, ob man das angelegte Projekt komplett oder in Komponenten handhaben möchte. Für den
+Auftraggeber kann Ditz dann auch eine hübsche HTML-Seite generieren, die den Projektstatus aufzeigt.
+Für alle, denen bestehende Möglichkeiten nicht ausreichen, kann man dann auch noch Plugins erweitern.
+
+Inzwischen habe ich ein Lied gehört, war auf Toilette, hab nen Keks gegessen, ein paar Schnittchen
+gemacht und eben auch noch Ditz eingerichtet und wir sind bei 434 übertragenen Mails. Sehr schön aber
+ist zu sehen, dass WebCit die Informationen ohne neu zu laden aktualisiert.
+
+Ich ärgere mich ein wenig, dass ich die Zeit nicht gemessen habe, aber es ist geschafft! Nun habe ich
+endlich alle 696 Emails übetragen. Was er nicht übertrug sind die Ordner. Das ist schade, aber kein
+großes Problem. Im Moment habe ich aber keine wirkliche Lust, das Problem anzugehen. An sich sollte
+es aber kein Problem sein, da was zu basteln™.
+

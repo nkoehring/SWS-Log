@@ -1,14 +1,17 @@
 {
-    "1313502228": {
-        "title": "test article",
-        "tags": ["foo", "bar", "baz"]
+    "articles": {
+        "1315202798": {
+            "title": "Hallo Welt!",
+            "tags": ["firstOne", "life", "programming", "meta", "Deutsche Bahn", "travel"]
+        },
+        "1316296553": {
+            "title": "Citadel!",
+            "tags": ["server", "citadel", "maildir", "migration"]
+        }
     },
-    "1313502302": {
-        "title": "test article again",
-        "tags": ["foo", "baz"]
-    },
-    "1315202798": {
-        "title": "Hallo Welt!",
-        "tags": ["firstOne", "life", "programming", "meta", "Deutsche Bahn", "travel", "foo"]
+
+    "options": {
+        // all articles before this date are inside the archive
+        "archive_date": "1315202798"
     }
 }
