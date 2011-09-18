@@ -26,9 +26,7 @@ ersetzen und Citadel neustarten (geht ganz einfach über das Webinterface).
 
 Interessant wirds dann, wenn man die alten Mails gern zu Citadel übertragen möchte. Einfach geht es
 vorallem, wenn der alte IMAP-Server noch läuft. Tut er aber bei mir schon lang nicht mehr. Nach ein
-wenig recherche "fand sich aber ein
-Leidensgenosse":http://wiki.colar.net/ruby_script_to_upload_convert_a_maildir_inbox_to_an_imap_server
-und seine Lösung, das lokale Maildir zum IMAP-Server von Citadel zu übertragen.
+wenig recherche "fand sich aber ein Leidensgenosse":http://wiki.colar.net/ruby_script_to_upload_convert_a_maildir_inbox_to_an_imap_server und seine Lösung, das lokale Maildir zum IMAP-Server von Citadel zu übertragen.
 
 Ob und wenn ja wie gut es klappt, schreib ich gleich…
 
