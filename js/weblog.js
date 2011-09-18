@@ -39,8 +39,7 @@
       }
 
       if (!cntxt.articles) {
-        cntxt.load('/articles.json').then(function(data) {
-          console.log(data);
+        cntxt.load('/articles.json?v=1316385264', {json: true}).then(function(data) {
           cntxt.articles = data.articles;
           cntxt.options = data.options;
           setIndex();

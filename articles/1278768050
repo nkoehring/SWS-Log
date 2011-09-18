@@ -1,0 +1,18 @@
+My work as <abbr title="Ruby On Rails">RoR</abbr> developer is not only simple plain implementation on demand. Sometimes I have to think about a good and most notably user friendly solution.
+
+The main problem here is to get the fine line between friendliness for users and developers. If the idea is hard to implement we have to evaluate its worthiness first.
+
+My last subject was to conceive a way to make typical logic data filters more user friendly. After some discussion with Google and Friends I came up to use natural language for this. I refused the previous idea – creating some simple but intelligent (Google-like) search field thingy – because we simply need some more sophisticated settings.
+
+The advantage of using natural language is obvious. The audience gets a list of sentences describing the filter settings in the way they do. Additionally every sentence contains a long (natural spoken) form of the appropriate column name.
+
+Examples?
+
+Show only items with…
+  * quality of delivery in area 2 lesser than 80%
+    @(qd2 < 80)@
+ * requests between May and June, 2010
+   @(request_date >= 2010-05-01 AND request_date < 2010-07-01)@
+ * requests from "Munich"
+   @(request_city == "Munich")@
+

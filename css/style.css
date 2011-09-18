@@ -80,4 +80,8 @@ article {
   -webkit-transition: all 0.5s ease-out;
   -o-transition: all 0.5s ease-out;
 }
+
 #development_info { margin-top: 3em; }
+
+table { background: #EEE; padding: 0.5em; }
+td { border: 1px dotted #AAA; padding: 0 1em; }

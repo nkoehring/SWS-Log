@@ -1,0 +1,112 @@
+Wie wir alle benutze auch ich Passwörter oder evtl. besser Mantras zum Schutze meiner Privatsphäre, der Einstellungen diverser (Web-)Dienste und manchmal auch nur aus purer Paranoidität. Und gerade wegen letzterem habe ich mal geschaut, ob es Übersichtstabellen gibt, in denen Passwörter (bzw eben Mantras) nach ihrere Komplexität aufgereiht sind.
+
+Et voilà: "Password Recovery Speeds":http://www.lockdown.co.uk/?pg=combi – eine Tabelle mit genau den gewünschten Informationen und sogar den approximierten Zeitspannen für sechs verschiedene Leistungsklassen, die Bruteforce-Attacken zum knacken eines entsprechenden Passworts benötigen.
+
+Hauptausschlaggebend für die Schätzung der Passwortkomplexität sind vorallem zwei Parameter: Die Länge des Passwortes, sowie die Anzahl der möglichen Zeichen. Daraus ergibt sich ganz einfach die Anzahl der möglichen Kombinationen. Soweit so gut und vorallem sicher auch bekannt.
+
+Nun habe ich mich aber mal gefragt, was passiert, wenn man ein UTF-8-Zeichen in seinem Passwort hat. Wie erhöht sich dadurch der Zeichenraum?
+
+Als Beispiel ziehe ich mal die Definition im "Kerberos-Protokoll":http://de.wikipedia.org/wiki/Kerberos_(Informatik) heran. Da gibt es folgende Gruppen:
+# Lowercase letters (26)
+# Uppercase letters (26)
+# Numbers (10)
+# Punctuation (34?)
+# Other Characters (??)
+
+Nun sind sicher schnell ein paar Fragezeichen ins Auge gestochen. Die Punktuierung mit 34 Zeichen anzusetzen halte ich für realistisch, man kann ansonsten ja einfach mal durchprobieren. Aber was bedeutet "Other Characters"? Alles ungleich dem Rest? Oder alles, was in den erweiterten ASCII-Zeichensatz passt?
+
+Nehmen wir letzteres an, kann man von bis zu 128 weiteren Zeichen ausgehen. Damit wäre der gesamte Zeichenraum bei 26+26+10+34+128 = 224 Zeichen. Mein bisheriges Passwort deckte diesen Raum ab. Bei angenommenen zehn Zeichen erreicht man damit eine ordentliche Komplexität von 224**10, was etwas mehr als 78 Bit entspricht. Zum Vergleich: Ein gleich langes Passwort bestehend aus Zahlen, Groß- und Kleinbuchstaben liegt irgendwo zwischen 59 und 60 Bit.
+
+Aber um nun endlich mal zurück zu den UTF-8-Zeichen zu kommen. Denken wir uns eine weitere Kategorie "Special Characters" dazu, die alle "üblicherweise" Unterstützen UTF-8-Zeichen enthält. Dies entspricht allen Zeichen, die mit drei der vier Möglichen Bytes abgedeckt werden und somit "virtuell alle allgemein genutzten Zeichen/Symbole" enthält. Dieser Bereich erstreckt sich damit auf 2**24 = 16777216 Möglichkeiten. Mit diesem Zeichenraum hat man bei eine minimalen Passwortlänge von zwei Zeichen bereits nahezu 300Mrd. Mögliche Kombinationen, die es zu testen gilt. Bei drei Zeichen sind es bereits 4.7 Trilliarden(!).
+
+Aus purer Geilheit an den riesigen Zahlen hier mal eine Tabelle im Stile von "Password Recovery Speeds":http://www.lockdown.co.uk/?pg=combi, aber mit moderneren und vorallem paranoideren Angriffsszenarien:
+
+Klasse A: AMD Phenom II X4 ~3GHz – *~16,7 MPW/s*
+(recht erschwinglicher Heim-PC)
+
+Klasse B: Cell Broadband Engine ~3,2GHz – *~24,4 MPW/s*
+(IBM Server Prozessor, in kleinerer Form in der PS3 verbaut)
+
+Klasse C: ATI Radeon HD 5970 X2 – *~3,5 GPW/s*
+(Gamer-PC, Highend-Grafikkarte)
+
+Klasse D: ATI Radeon HD 6970 x4 – *~8 GPW/s*
+(Gamer-PC, 4 Highend-Grafikkarten)
+
+Klasse E: Distributed.net – *~76,1 GPW/s*
+(Bovine RC5-64 Project, distributed)
+
+
+Die Werte habe ich aus den Distributed.net-Statistiken.
+Und die Abkürzungen, die selbstverständlich jedem Standard trotzen, habe ich mir selbst ersponnen:
+* MPW/s – "Megapasswords per Second", Millionen Passwörter pro Sekunde
+* GPW/s – "Gigapasswords per Second", Milliarden Passwörter pro Sekunde
+
+
+
+Und nun endlich das, was alle Zahlenfetischisten so sehnsüchtig erwarten:
+
+Zahlen (10 Zeichen: 10<sup>n</sup> Kombinationsmöglichkeiten)
+
+|_. Passwort-Beispiel|_. Klasse A  |_. Klasse B  |_. Klasse C  |_. Klasse D  |_. Klasse E  |
+| 74392478           |>. 6s        |>. 5s        |>. &lt;1s    |>. &lt;1s    |>. &lt;1s    |
+| 3627163777         |>. 10m       |>. 6m50s     |>. &lt;3s    |>. &lt;2s    |>. &lt;1s    |
+| 676372777266       |>. 16h38m    |>. 11h23m    |>. 4m46s     |>. 2m5s      |>. 14s       |
+
+
+Zahlen und Buchstaben (62<sup>n</sup> Kombinationsmöglichkeiten)
+
+|_. Passwort-Beispiel|_. Klasse A|_. Klasse B|_. Klasse C|_. Klasse D|_. Klasse E|
+| hxHH24dD           |>. 5 Monate  |>. ¼ J.      |>. 17h20m    |>. 7h35m     |>. 48m       |
+| hT2dD63jk7         |>. 1500 J.   |>. 1090 J.   |>. &gt;7.5 J.|>. 3 J. 4 Mo.|>. 4¼ Monate |
+| jjD3Dd77sdW6       |>. 6 Mio J.  |>. 4 Mio J.  |>. 29210 J.  |>. 12780 J.  |>. 1343 J.   |
+
+
+Zahlen, Buchstaben, Punktuierung (96<sup>n</sup> Kombinationen)
+
+|_. Passwort-Beispiel|_. Klasse A|_. Klasse B|_. Klasse C|_. Klasse D|_. Klasse E|
+| gf6!j?d7           |>.13 J. 8 Mo.|>. 9 J. 4 Mo.|>. 23d20,5h  |>. 10d10,5h  |>. 1d2h20m   |
+| js7?8+23l9         |>. 126153 J. |>. 86343 J.  |>. 600 Jahre |>. 263 Jahre |>.27 J. 8 Mo.|
+| p.k,s-jY3Dn?       |>. 1.2 Mrd J.|>. 796 Mio J.|>. 5.5 Mio J.|>. 2.5 Mio J.|>. 255137 J. |
+
+
+Erweiterter ASCII-Raum (224<sup>n</sup> Kombinationsmöglichkeiten)
+
+|_. Passwort-Beispiel|_. Klasse A|_. Klasse B|_. Klasse C|_. Klasse D|_. Klasse E|
+| RG!µẼ°3D           |>. 12028 J.  |>. 8232 Jahre|>. 57,5 Jahre|>. 25 Jahre  |>. 2 J. 8 Mo.|
+| éT7ADä#€k8         |>. 600 Mio J.|>. 413 Mio J.|>. 2,9 Mio J.|>. 1,3 Mio J.|>. 132434 J. |
+| djÿ§§d42sd]6       |>. 30 Bio J. |>. 2 Bio J.  |>. 145 Mrd J.|>. 23 Mrd J. |>. 6,6 Mrd J.|
+
+
+Und nun für die wirklich hartgesottenen unter euch:
+3byte-UTF-8-Raum (16777216<sup>n</sup> Kombinationsmöglichkeiten)
+
+|_. Passwort-Beispiel|_. Klasse A     |_. Klasse B     |_. Klasse C     |_. Klasse D     |_. Klasse E     |
+| øגק                |>. 9 Mio J.     |>. 6 Mio  J.    |>. 42755 Jahre  |>. 18705 Jahre  |>. 1966 Jahre   |
+| føøβαr             |>. 4*10<sup>29</sup> J.|>. 3*10<sup>29</sup> J.|>. 3*10<sup>27</sup> J.|>. 9*10<sup>26</sup> J.|>. 9*10<sup>25</sup> J.|
+| føøβαr23           |>. 10<sup>44</sup> J.|>. 8*10<sup>43</sup> J.|>. 5*10<sup>41</sup> J.|>. 2*10<sup>41</sup> J.|>. 3*10<sup>40</sup> J.|
+| wøø┼ a p4β         |>. 3*10<sup>58</sup> J.|>. 2*10<sup>58</sup> J.|>. 10<sup>56</sup> J.|>. 7*10<sup>55</sup> J.|>. 7*10<sup>54</sup> J.|
+| …m³gâþ4βwørd       |>. 9*10<sup>72</sup> J.|>. 6*10<sup>72</sup> J.|>. 4*10<sup>70</sup> J.|>. 2*10<sup>70</sup> J.|>. 2*10<sup>69</sup> J.|
+
+Fazit? Sonderzeichen machen Passwörter sicherer, UTF-8-Symbole außerhalb jedes ASCII-Charsets unknackbar!
+
+Unter unixoiden System hat man out-of-the-box schon einige solcher Zeichen direkt verfügbar. Einfach mal ausprobieren mit AltGR+Zeichen und AltGR+Shift+Zeichen. Außerdem lässt sich die Zeichentabelle komplett anpassen [1], oder per Modifier auf andere Zeichensätze (japanisch zB) umschalten.[2]
+
+Windows-User haben es da schwerer. Dort kann man virtuell zwar jedes UTF-8-Zeichen tippen, muss das aber mit einer Kombination aus Alt-Taste und einem Code auf dem Nummernblock machen.[3] Auf einem Laptop zB wird das mindestens unhandlich, wenn es denn überhaupt geht.
+
+Und jetzt fange ich endlich an, mit den wichtigeren Dingen des Lebens. Der Arbeit.
+
+
+Zur Ergänzung:
+
+Der "@techpriester":http://twitter.com/techpriester meinte:
+
+bq. ein schönes Repertoire an Sonderzeichen hat man auch auf dem Mac, mit [option]+[rest der tastatur]
+
+
+fn1. "XKB-Config":http://www.xfree86.org/current/XKB-Config.html
+
+fn2. "XKB layout switching":http://www.linuxquestions.org/questions/linux-software-2/current-xkbmap-x-org-kb-layout-switching-470134/
+
+fn3. "UTF-8 unter Windows":http://www.5goldig.de/Text_Uebersetzer/Zeichen-Buchstaben.html
+
