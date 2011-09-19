@@ -7,10 +7,12 @@
 
       var setIndex = function() {
         $.each(cntxt.articles, function(i, attrs) {
+          unixmillies = parseInt(i)*1000;
+          date = new Date(unixmillies);
           cntxt.$element().prepend(
             '<article id="'+i+'">'+
-            '<a href="#/'+i+'"><h2>'+attrs.title+'</h2></a>'+
-            '<div id="'+i+'_content"></div></article>');
+            '<a href="#/'+i+'"><h2>'+attrs.title+'</h2><span class="date">'+prettyDate(date)+
+            '</span></a>'+'<div id="'+i+'_content"></div></article>');
         });
       }
 
