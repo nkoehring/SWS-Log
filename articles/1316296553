@@ -62,3 +62,11 @@ endlich alle 696 Emails übetragen. Was er nicht übertrug sind die Ordner. Das 
 großes Problem. Im Moment habe ich aber keine wirkliche Lust, das Problem anzugehen. An sich sollte
 es aber kein Problem sein, da was zu basteln™.
 
+*Update:* Was ich ganz vergessen habe: Am Ende stellte sich heraus, dass ich "das mit den Ordnern"
+nicht händisch angehen musste, da ich "IMAPFilter":https://github.com/lefcha/imapfilter verwende und
+meine "Konfiguration" alle nötigen Ordner selbst erstellt.
+
+So bleibt also nur noch das Problem mit dem fehlenden Support für Wildcard-Domains. Ich habe irgendwo
+in den tiefen einer Mailingliste gelesen, dass schon vor vier Jahren nach RegExp-Support für Citadels
+mail.aliases gefragt wurde. Falls jemand mehr weiß, bitte melden!
+
