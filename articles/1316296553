@@ -41,7 +41,7 @@ Puh, das dauert… bisher gibts (man kann ja nebenbei schon in Citadel gucken) 1
 Nachrichten. Ich hibbel also noch eine ganze Ecke weiter.
 
 Weil ich ja nun Zeit habe, schaue ich mir nach langem mal wieder "ditz":http://ditz.rubyforge.org/
-an. Das ist ein Kommandozeilenwerkzeug zur verteilten Sammeln von Tickets. Also zu normalnerd: ein
+an. Das ist ein Kommandozeilenwerkzeug zum verteilten Sammeln von Tickets. Also zu normalnerd: ein
 distributed "issue tracker":http://de.wikipedia.org/wiki/Issue-Tracking-System.
 
 Mit Ruby1.9 wollte es erstmal nur Fehlermeldungen werfen, aber unter Ruby1.8 funktioniert es
