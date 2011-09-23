@@ -42,6 +42,7 @@ header menu li:hover .effect_dummy {
 
 menu#tags {
   display: block;
+  max-width: 960px;
   text-align: right;
   word-spacing: -0.25em;
 }
@@ -52,7 +53,7 @@ menu#tags:before {
   font-size: 2em;
 }
 menu#tags li {
-  display: inline;
+  display: inline-block;
   margin: 0 0.2em;
 }
 

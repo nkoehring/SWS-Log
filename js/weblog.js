@@ -5,11 +5,24 @@
       this.app.swap('');
       var cntxt = this;
 
+      var autoTag = function(stamp) {
+        unixmillies = parseInt(stamp)*1000; // we need milliseconds since epoch for Date
+        article_year = (new Date(unixmillies)).getFullYear();
+        current_year = (new Date).getFullYear();
+        article = cntxt.articles[stamp];
+
+        article.tags.push(""+article_year);
+        if (article_year < current_year) article.tags.push("archive");
+        return true;
+      }
+
       var setIndex = function(filter_callback) {
         $.each(cntxt.articles_sorted, function(i, stamp) {
           attrs = cntxt.articles[stamp];
-          unixmillies = parseInt(stamp)*1000;
+          unixmillies = parseInt(stamp)*1000; // we need milliseconds since epoch for Date
           date = new Date(unixmillies);
+          autoTag(stamp);
+
           cntxt.$element().prepend(
             '<article id="'+stamp+'">'+
             '<a href="#/'+stamp+'"><h2>'+attrs.title+'</h2><span class="date">'+prettyDate(date)+
@@ -34,8 +47,12 @@
         median = total/median;
 
         $('#tags').text("");
-        $.each(tags, function(tag, n) {
-          elem = $('<li><a href="#tag/'+tag+'">'+tag+'</a></li>');
+        tags_sorted = Object.keys(tags).sort();
+        $.each(tags_sorted, function(i, tag) {
+          n = tags[tag];
+          tag_href = "#tag/"+tag.replace(/ /g, "%20");
+          tag_string = tag.replace(/ /g, '&nbsp;');
+          elem = $('<li><a href="'+tag_href+'">'+tag_string+'</a></li>');
           elem.css("font-size", (1+((n-median)/5))+"em");
           $('#tags').append(elem);
         });
