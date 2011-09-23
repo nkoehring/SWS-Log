@@ -5,14 +5,15 @@
       this.app.swap('');
       var cntxt = this;
 
-      var setIndex = function() {
-        $.each(cntxt.articles, function(i, attrs) {
-          unixmillies = parseInt(i)*1000;
+      var setIndex = function(filter_callback) {
+        $.each(cntxt.articles_sorted, function(i, stamp) {
+          attrs = cntxt.articles[stamp];
+          unixmillies = parseInt(stamp)*1000;
           date = new Date(unixmillies);
           cntxt.$element().prepend(
-            '<article id="'+i+'">'+
-            '<a href="#/'+i+'"><h2>'+attrs.title+'</h2><span class="date">'+prettyDate(date)+
-            '</span></a>'+'<div id="'+i+'_content"></div></article>');
+            '<article id="'+stamp+'">'+
+            '<a href="#/'+stamp+'"><h2>'+attrs.title+'</h2><span class="date">'+prettyDate(date)+
+            '</span></a>'+'<div id="'+stamp+'_content"></div></article>');
         });
       }
 
@@ -42,6 +43,7 @@
 
       if (!cntxt.articles) {
         cntxt.load('/articles.json?v=1316385264', {json: true}).then(function(data) {
+          cntxt.articles_sorted = Object.keys(data.articles).sort();
           cntxt.articles = data.articles;
           cntxt.options = data.options;
           setIndex();
