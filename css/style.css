@@ -85,3 +85,4 @@ article {
 
 table { background: #EEE; padding: 0.5em; }
 td { border: 1px dotted #AAA; padding: 0 1em; }
+.small { font-size: 0.75em; }
