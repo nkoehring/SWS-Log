@@ -5,51 +5,59 @@
       this.app.swap('');
       var cntxt = this;
 
-      var autoTag = function(stamp) {
+      cntxt.autoTag = function(stamp) {
         unixmillies = parseInt(stamp)*1000; // we need milliseconds since epoch for Date
         article_year = (new Date(unixmillies)).getFullYear();
         current_year = (new Date).getFullYear();
         article = cntxt.articles[stamp];
 
-        article.tags.push(""+article_year);
-        if (article_year < current_year) article.tags.push("archive");
+        // need to check against doubles
+        if (article.tags.indexOf(""+article_year) < 0) article.tags.push(""+article_year);
+        if (article_year < current_year && article.tags.indexOf("archive") < 0)
+          article.tags.push("archive");
         return true;
       }
 
-      var setIndex = function(filter_callback) {
+      cntxt.setIndex = function() {
         $.each(cntxt.articles_sorted, function(i, stamp) {
           attrs = cntxt.articles[stamp];
           unixmillies = parseInt(stamp)*1000; // we need milliseconds since epoch for Date
           date = new Date(unixmillies);
-          autoTag(stamp);
+          cntxt.autoTag(stamp);
 
-          cntxt.$element().prepend(
-            '<article id="'+stamp+'">'+
+          html = '<article id="'+stamp+'">'+
             '<a href="#/'+stamp+'"><h2>'+attrs.title+'</h2><span class="date">'+prettyDate(date)+
-            '</span></a>'+'<div id="'+stamp+'_content"></div></article>');
+            '</span></a>'+'<div id="'+stamp+'_content"></div></article>';
+
+          if (attrs.tags.indexOf(cntxt.tag_filter) >= 0) {
+            cntxt.$element().prepend(html);
+          } else if (!cntxt.tag_filter && attrs.tags.indexOf("archive") == -1) {
+            cntxt.$element().prepend(html);
+          }
         });
       }
 
-      var createTagCloud = function() {
-        tags = {};
+      cntxt.createTagCloud = function() {
+        cntxt.tags = {};
         median = 0;
         total = 0;
+
         $.each(cntxt.articles, function(i, attrs) {
           $.each(attrs.tags, function(j, tag) {
             total++;
-            if (tag in tags) tags[tag]++;
+            if (tag in cntxt.tags) cntxt.tags[tag]++;
             else {
               median++;
-              tags[tag] = 1;
+              cntxt.tags[tag] = 1;
             }
           });
         });
         median = total/median;
 
         $('#tags').text("");
-        tags_sorted = Object.keys(tags).sort();
+        tags_sorted = Object.keys(cntxt.tags).sort();
         $.each(tags_sorted, function(i, tag) {
-          n = tags[tag];
+          n = cntxt.tags[tag];
           tag_href = "#tag/"+tag.replace(/ /g, "%20");
           tag_string = tag.replace(/ /g, '&nbsp;');
           elem = $('<li><a href="'+tag_href+'">'+tag_string+'</a></li>');
@@ -63,16 +71,16 @@
           cntxt.articles_sorted = Object.keys(data.articles).sort();
           cntxt.articles = data.articles;
           cntxt.options = data.options;
-          setIndex();
-          createTagCloud();
         }).then(callback);
       } else {
-        setIndex();
         callback();
       }
     });
 
-    this.get('#/:id', function(context) {
+    this.get('#/:id', function(cntxt) {
+      cntxt.setIndex();
+      cntxt.createTagCloud();
+
       var a_id = this.params['id'];
       if (!this.articles[a_id]) { return this.notFound(); }
 
@@ -84,12 +92,15 @@
       });
     });
 
-    this.get('#tag/:tag', function(context) {
-      console.log(this.params['tag']);
+    this.get('#tag/:tag', function(cntxt) {
+      cntxt.tag_filter = this.params['tag'];
+      cntxt.setIndex();
+      cntxt.createTagCloud();
     });
 
-    this.get('#/', function(context) {
-
+    this.get('#/', function(cntxt) {
+      cntxt.setIndex();
+      cntxt.createTagCloud();
     });
 
   });
