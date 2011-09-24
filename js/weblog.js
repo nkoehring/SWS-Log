@@ -18,6 +18,26 @@
         return true;
       }
 
+      cntxt.createTagsHTML = function(elem, tag_hash_or_list, median) {
+        if (!median) median = 0;
+        elem = $(elem);
+        elem.text("");
+
+        if (isArray(tag_hash_or_list)) tags_sorted = tag_hash_or_list.sort();
+        else tags_sorted = Object.keys(tag_hash_or_list).sort();
+
+        $.each(tags_sorted, function(i, tag) {
+          if (isArray(tag_hash_or_list)) n = 1;
+          else n = tag_hash_or_list[tag];
+          tag_href = "#tag/"+tag.replace(/ /g, "%20");
+          tag_string = tag.replace(/ /g, '&nbsp;');
+          tag_obj = $('<li><a href="'+tag_href+'">'+tag_string+'</a></li>');
+          tag_obj.css("font-size", (1+((n-median)/5))+"em");
+          elem.append(tag_obj);
+        });
+        return elem;
+      }
+
       cntxt.setIndex = function() {
         $.each(cntxt.articles_sorted, function(i, stamp) {
           attrs = cntxt.articles[stamp];
@@ -57,17 +77,7 @@
           });
         });
         median = total/median;
-
-        $('#tags').text("");
-        tags_sorted = Object.keys(cntxt.tags).sort();
-        $.each(tags_sorted, function(i, tag) {
-          n = cntxt.tags[tag];
-          tag_href = "#tag/"+tag.replace(/ /g, "%20");
-          tag_string = tag.replace(/ /g, '&nbsp;');
-          elem = $('<li><a href="'+tag_href+'">'+tag_string+'</a></li>');
-          elem.css("font-size", (1+((n-median)/5))+"em");
-          $('#tags').append(elem);
-        });
+        cntxt.createTagsHTML("#tags", cntxt.tags, median);
       }
 
       if (!cntxt.articles) {
@@ -82,16 +92,24 @@
     });
 
     this.get('#/:id', function(cntxt) {
+
+      var a_id = this.params['id'];
+      if (!cntxt.articles[a_id]) { return this.notFound(); }
+
+      if (cntxt.articles[a_id].tags.indexOf("archive") >= 0) cntxt.tag_filter = "archive";
       cntxt.setIndex();
       cntxt.createTagCloud();
 
-      var a_id = this.params['id'];
-      if (!this.articles[a_id]) { return this.notFound(); }
-
       this.load('/articles/'+a_id).then(function(article) {
         $('[id$=_content]').hide();
+
+        tag_hash = cntxt.articles[a_id].tags
+        tag_list = '<ul id="'+a_id+'_tags" class="tags"></ul>'
+        tag_list = cntxt.createTagsHTML(tag_list, tag_hash);
         rendered_article = convert(article);
-        $('#'+a_id+'_content').html(rendered_article).slideDown();
+
+        $('#'+a_id+'_content').html(tag_list).append(rendered_article).slideDown();
+
         $('body').scrollTop($('#'+a_id).offset().top);
       });
     });

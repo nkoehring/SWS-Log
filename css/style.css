@@ -40,19 +40,24 @@ header menu li:hover .effect_dummy {
   color: inherit;
 }
 
-menu#tags {
-  display: block;
-  max-width: 960px;
+menu#tags { display: block; max-width: 960px; }
+article ul.tags {
+  display: inline-block;
+  float: right;
+  max-width: 40%;
+}
+menu#tags, article ul.tags {
   text-align: right;
   word-spacing: -0.25em;
 }
-menu#tags:before {
+menu#tags:before, article ul.tags:before {
   content: "tags:";
   color: #AAA;
   font-weight: bold;
   font-size: 2em;
+  vertical-align: middle;
 }
-menu#tags li {
+menu#tags li, article ul.tags li {
   display: inline-block;
   margin: 0 0.2em;
 }

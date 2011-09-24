@@ -1,3 +1,5 @@
+// safe Objecs.keys, found at
+// http://whattheheadsaid.com/2010/10/a-safer-object-keys-compatibility-implementation
 Object.keys = Object.keys || (function () {
   var hasOwnProperty = Object.prototype.hasOwnProperty,
     hasDontEnumBug = !{toString:null}.propertyIsEnumerable("toString"),
@@ -30,4 +32,10 @@ Object.keys = Object.keys || (function () {
     return result;
   };
 })();
+
+// safe isArray, found at
+// http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/
+function isArray(o) {
+  return Object.prototype.toString.call(o) === '[object Array]';
+}
 
