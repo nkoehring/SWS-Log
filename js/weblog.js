@@ -35,6 +35,10 @@
             cntxt.$element().prepend(html);
           }
         });
+        if (!cntxt.tag_filter)
+          cntxt.$element().append('<a href="#tag/archive"><h3>view archived articles</h3></a>');
+        else if (cntxt.tag_filter == "archive")
+          cntxt.$element().append('<a href="#/"><h3>view current articles</h3></a>');
       }
 
       cntxt.createTagCloud = function() {

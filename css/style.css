@@ -66,8 +66,8 @@ h2 {
 }
 h3 { font-size: 1.1em; font-weight: bold; }
 a { color: #33C; text-decoration: none; }
-a:visited { color: #777; }
-a:hover { color: #777; }
+a:visited { color: #337; }
+a:hover { color: #33F; }
 
 article {
   border-bottom: 1px solid #AAA;
