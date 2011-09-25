@@ -5,6 +5,15 @@
       this.app.swap('');
       var cntxt = this;
 
+      cntxt.createAboutPage = function() {
+        title = "<h2>Über mich</h2>";
+        this.load('/articles/about').then(function(article) {
+          rendered_article = convert(article);
+          cntxt.$element().html(title).append(rendered_article);
+        });
+
+      }
+
       cntxt.autoTag = function(stamp) {
         unixmillies = parseInt(stamp)*1000; // we need milliseconds since epoch for Date
         article_year = (new Date(unixmillies)).getFullYear();
@@ -117,6 +126,11 @@
     this.get('#tag/:tag', function(cntxt) {
       cntxt.tag_filter = this.params['tag'];
       cntxt.setIndex();
+      cntxt.createTagCloud();
+    });
+
+    this.get('#about/', function(cntxt) {
+      cntxt.createAboutPage();
       cntxt.createTagCloud();
     });
 
