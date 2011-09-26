@@ -11,8 +11,8 @@ body {
 header {
   position: relative;
   display: block;
-  padding: 6px 20px;
-  background: #888;
+  padding: 25px 20px;
+  background: #DFDFDF;
   background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD));
   background: -moz-linear-gradient(top, #FFF, #DDD);
 }
@@ -26,14 +26,15 @@ header menu {
 header menu li {
   display: inline-block;
   padding: 2px 5px;
-  background: #EEE;
+  background: #AAE;
   background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD));
   background: -moz-linear-gradient(top, #FFF, #DDD);
   text-align: center;
 }
 header menu li:hover {
-  background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DAA));
-  background: -moz-linear-gradient(top, #FFF, #DAA);
+  color: black;
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#AAD));
+  background: -moz-linear-gradient(top, #FFF, #AAD);
 }
 header menu li:hover .effect_dummy {
   margin-top: 0px;
