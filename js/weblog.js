@@ -117,7 +117,7 @@
         tag_list = cntxt.createTagsHTML(tag_list, tag_hash);
         rendered_article = convert(article);
 
-        $('body').animate({'scrollTop': $('#'+a_id).offset().top}, 500);
+        $('body').animate({'scrollTop': $('#'+a_id).offset().top - 20}, 500);
         $('#'+a_id+'_content').html(tag_list).append(rendered_article).slideDown('500');
       });
     });
