@@ -140,7 +140,10 @@
 
   });
 
-  $(function() { app.run('#/'); });
+  $(function() {
+    $('body > header').click(function() {location.href = '#/';});
+    app.run('#/');
+  });
 
 })(jQuery);
 
