@@ -104,3 +104,10 @@ article {
 table { background: #EEE; padding: 0.5em; }
 td { border: 1px dotted #AAA; padding: 0 1em; }
 .small { font-size: 0.75em; }
+
+blockquote {
+  background: transparent url(/img/quote.png) left top no-repeat scroll;
+  margin: 0;
+  margin-top: -1em;
+  padding: 1em 0 0.5em 80px;
+}
