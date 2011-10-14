@@ -1,7 +1,14 @@
+@font-face {
+  font-family: 'Antic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Antic'), local('Antic-Regular'), url('/css/antic.woff') format('woff');
+}
+
 body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: none;
-  font: 18px/1.5 'Antic', Cambria, Georgia, serif;
+  font: 18px/1.5em 'Antic', Cambria, Georgia, serif;
   margin: 2em 2.3em;
   color: #333;
   background-color: #FAFAFA;
@@ -52,20 +59,21 @@ header menu li:hover .effect_dummy {
   color: inherit;
 }
 
-menu#tags { display: block; max-width: 960px; }
-menu#tags, article ul.tags {
+menu#tags {
+  display: block;
+  max-width: 960px;
   text-align: right;
   word-spacing: -0.25em;
   padding-left: 0;
 }
-menu#tags:before, article ul.tags:before, article .pretty_date:before {
+menu#tags:before {
   content: "tags:";
   color: #AAA;
   font-weight: bold;
   font-size: 2em;
   vertical-align: middle;
 }
-menu#tags li, article ul.tags li {
+menu#tags li {
   display: inline-block;
   margin: 0 0.2em;
 }
@@ -120,15 +128,15 @@ article .info_block {
   display: inline-block;
   float: right;
   width: 320px;
-}
-article .pretty_date:before {
-  content: "created";
-  margin-right: 12px;
+  color: #AAA;
+  font-weight: bold;
   font-size: 1.8em;
 }
-article .pretty_date {
-  font-size: 1.2em;
-}
+article .info_block .pretty_date:before { content: "created"; margin-right: 0.333em; }
+article .info_block .author:before { content: "by"; margin-right: 0.333em; }
+article .info_block .tags:before { content: "in"; margin-right: 0.333em; }
+article .info_block .tags { margin:0; padding:0; }
+article .info_block .tags li { display: inline-block; padding: 0 0.5em 0 0; }
 
 .effect_dummy {
   margin-top: -16px;

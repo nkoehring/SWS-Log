@@ -112,17 +112,21 @@
       this.load('/articles/'+a_id).then(function(article) {
         $('[id$=_content]').hide();
 
-        tag_hash = cntxt.articles[a_id].tags
-        tag_list = '<ul id="'+a_id+'_tags" class="tags"></ul>'
-        tag_list = cntxt.createTagsHTML(tag_list, tag_hash);
-
         unixmillies = parseInt(a_id)*1000; // we need milliseconds since epoch for Date
         date = new Date(unixmillies);
         pretty_date = '<div class="pretty_date">'+prettyDate(date)+'</div>';
 
+        /* currently fixed, may be changed some day */
+        author = '<div class="author"><a href="http://about.me/nkoehring">nkoehring</a></div>';
+
+        tag_hash = cntxt.articles[a_id].tags
+        tag_list = '<ul id="'+a_id+'_tags" class="tags"></ul>'
+        tag_list = cntxt.createTagsHTML(tag_list, tag_hash, 1);
+
         info_block = $('<div class="info_block"></div>');
-        info_block.append(tag_list);
         info_block.append(pretty_date);
+        info_block.append(author);
+        info_block.append(tag_list);
 
         rendered_article = convert(article);
 
