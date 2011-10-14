@@ -1,7 +1,7 @@
 body {
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  font: 16px/22px 'Antic', 'Consolas', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: none;
+  font: 18px/1.5 'Antic', Cambria, Georgia, serif;
   margin: 2em 2.3em;
   color: #333;
   background-color: #FAFAFA;
@@ -17,12 +17,12 @@ header {
   background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD));
   background: -moz-linear-gradient(top, #FFF, #DDD);
   */
-  background: black url(/img/slow_shutter_light.png) center no-repeat scroll;
+  background: black url(/img/typography.png) center no-repeat scroll;
   background:
-    url(/img/slow_shutter_light.png) center no-repeat scroll,
+    url(/img/typography.png) center no-repeat scroll,
     -webkit-gradient(linear, left top, left bottom, from(#444), to(#000));
   background:
-    url(/img/slow_shutter_light.png) center no-repeat scroll,
+    url(/img/typography.png) center no-repeat scroll,
     -moz-linear-gradient(top, #444, #000);
   height: 120px;
   cursor: pointer;
@@ -53,16 +53,12 @@ header menu li:hover .effect_dummy {
 }
 
 menu#tags { display: block; max-width: 960px; }
-article ul.tags {
-  display: inline-block;
-  float: right;
-  max-width: 40%;
-}
 menu#tags, article ul.tags {
   text-align: right;
   word-spacing: -0.25em;
+  padding-left: 0;
 }
-menu#tags:before, article ul.tags:before {
+menu#tags:before, article ul.tags:before, article .pretty_date:before {
   content: "tags:";
   color: #AAA;
   font-weight: bold;
@@ -86,8 +82,52 @@ a { color: #33C; text-decoration: none; }
 a:visited { color: #337; }
 a:hover { color: #33F; }
 
-article {
-  border-bottom: 1px solid #AAA;
+article { border-bottom: 1px solid #AAA; }
+article > div > p { width: 540px; padding-bottom: 0.2em; }
+article > div:first-letter {
+  float: left;
+  font-size: 3em;
+  line-height: 0.76em;
+  padding: 0.12em 0.12em 0 0
+}
+article.open {
+  position: relative;
+  overflow: hidden;
+  border-bottom: none;
+  padding: 1em 3em;
+  margin-top: 1em;
+  background: #EEF;
+}
+article.open:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-width: 0 32px 32px 0;
+  border-style: solid;
+  border-color:#CCF #FAFAFA;
+  /* css3 extras */
+  -webkit-box-shadow:   0 1px 1px rgba(0,0,0,0.3),
+                        -1px 1px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow:      0 1px 1px rgba(0,0,0,0.3),
+                        -1px 1px 1px rgba(0,0,0,0.2);
+  box-shadow:           0 1px 1px rgba(0,0,0,0.3),
+                        -1px 1px 1px rgba(0,0,0,0.2);
+}
+article.open h2 { font-size: 2em; text-align: center; margin-bottom: 1em; }
+article.open .date { display: none; }
+article .info_block {
+  display: inline-block;
+  float: right;
+  width: 320px;
+}
+article .pretty_date:before {
+  content: "created";
+  margin-right: 12px;
+  font-size: 1.8em;
+}
+article .pretty_date {
+  font-size: 1.2em;
 }
 
 .effect_dummy {

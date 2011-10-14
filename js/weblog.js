@@ -115,10 +115,21 @@
         tag_hash = cntxt.articles[a_id].tags
         tag_list = '<ul id="'+a_id+'_tags" class="tags"></ul>'
         tag_list = cntxt.createTagsHTML(tag_list, tag_hash);
+
+        unixmillies = parseInt(a_id)*1000; // we need milliseconds since epoch for Date
+        date = new Date(unixmillies);
+        pretty_date = '<div class="pretty_date">'+prettyDate(date)+'</div>';
+
+        info_block = $('<div class="info_block"></div>');
+        info_block.append(tag_list);
+        info_block.append(pretty_date);
+
         rendered_article = convert(article);
 
         $('body').animate({'scrollTop': $('#'+a_id).offset().top - 20}, 500);
-        $('#'+a_id+'_content').html(tag_list).append(rendered_article).slideDown('500');
+
+        $('#'+a_id).addClass("open");
+        $('#'+a_id+'_content').html(info_block).append(rendered_article).slideDown('500');
       });
     });
 
