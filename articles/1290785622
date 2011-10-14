@@ -3,7 +3,7 @@ Nach langem mal wieder ein Blogartikel von mir. Warum? Mir ist langweilig, ganz 
 Und weil die liebe Claudia und ich herrlich verschieden sind, wird mein Artikel hier auch ueberhaupt nichts mit ihr oder ihren Themen zu tun haben.
 
 <div style="float: left; margin-right: 1em;">
-  !http://blog.nkoehring.de/images/20101126/thumb2_playlist.png!:http://blog.nkoehring.de/images/20101126/playlist.png
+  !http://oldblog.nkoehring.de/images/20101126/thumb2_playlist.png!:http://blog.nkoehring.de/images/20101126/playlist.png
 </div>
 
 Ich habe heute naemlich mal aus lange Weile die Ausgabe von `xmms2 list` aufgepeppt und mir eine Playlist-Anzeige gefrickelt. Benoetigte Werkzeuge: Ein vernuenftiges Betriebssystem (vermutlich klappts aber auch unter Cygwin) und dessen Standard-Shellwerkzeuge watch und sed.
