@@ -8,6 +8,9 @@
       cntxt.createAboutPage = function() {
         title = "<h2>Über mich</h2>";
         this.load('/articles/about').then(function(article) {
+          // strange replacement stuff to avoid "no spaces after single linebreaks"
+          article = article.replace(/\n\n/g, '\n\n\n')
+          article = article.replace(/\n([^\n])/g, ' \n$1')
           rendered_article = convert(article);
           cntxt.$element().html(title).append(rendered_article);
         });
@@ -128,6 +131,9 @@
         info_block.append(author);
         info_block.append(tag_list);
 
+        // strange replacement stuff to avoid "no spaces after single linebreaks"
+        article = article.replace(/\n\n/g, '\n\n\n')
+        article = article.replace(/\n([^\n])/g, ' \n$1')
         rendered_article = convert(article);
 
         $('body').animate({'scrollTop': $('#'+a_id).offset().top - 20}, 500);
