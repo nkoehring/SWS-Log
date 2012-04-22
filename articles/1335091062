@@ -1,0 +1,105 @@
+Der Tag, an dem uns die Nachricht erreichte, war ein besonderer Tag. Ich freute mich schon länger auf
+ihn: Musikstreamingdienste – hier vorallem "Spotify":http://spotify.com – startet in Deutschland.
+Große Freude. Endlich die ganze Musik auf der Platte dezimieren und vorallem eine Menge neue Musik
+finden. Ja, die Zukunft und so!
+
+Naja, ich habe mich also darauf gefreut und es dann auch sofort ausprobiert. Bis zur
+Spotify-Membership vergingen auch nur noch wenige Tage, da ich den Dienst auch mobil voll nutzen
+wollte – und sind wir mal ehrlich: 10€ monatlich? Das ist ein Witz, wenn man bedenkt, was einem dafür
+geboten wird.
+
+Aber hey! Was ist mit Alternativen? In meinem Rausch hätte ich es fast vergessen: Alternativen
+checken kann nie schaden und verhindert unnötigen Frust. Also schaute ich mich um und mir wurde
+wärmstens "Rdio":http://rdio.com empfohlen. Ich habe mir die Seite angeschaut und fand sie auf den
+ersten Blick auch wirklich besser als Spotify. Rdio ist viel mehr ein soziales Musiknetzwerk als
+Spotify und bietet Benutzer-Playlists und vorallem auch einen Webplayer. Auf der Spotifyseite ist mit
+all diesen Dingen Ebbe.
+
+Fast schon überzeugt schmiss ich die Spotify-App von meinem Telefon, installierte Rdio und startete
+erstmal eine große Offline-Sync-Aktion mit unmengen Postrock. Die Bands suchte ich übrigens mit Hilfe
+von "MusicMaze":http://www.musicmaze.fm/, welches Rdio und "The Echonest":http://the.echonest.com/
+benutzt um zu einem Interpreten ähnliche aufzulisten.
+
+Nun hatte ich das WLAN-Kabel zum Glühen gebracht, freute mich über all die tolle neue Musik, doch da
+kam sie: Die große Enttäuschung. Ein gemeiner Dämon muss bei Rdio gewütet haben, anders kann man sich
+dieses Usability-Disaster einfach nicht erklären. Nun hat Spotify aber auch einige Glitches, die ich
+nicht gutheißen kann. Ich zähle einfach mal auf, was hier wo schiefgelaufen ist. Features, die beide
+Dienste haben, lasse ich in der Aufzählung weg.
+
+
+h3. Spotify
+
+_pro_
+* recht gut bedienbare Handy-Applikation
+* Client für Linux (wenn auch im Beta-Stadium)
+* "Mopidy":https://github.com/mopidy/mopidy/ (jaja, Spotify kann da nichts dafür und so)
+
+_contra_
+* keine Web-Applikation
+* Facebookzwang
+* kein social-networking (außer via Facebook)
+* für andere nervige und für dich _versteckte_ Facebook-Posts
+* Linuxclient nur für Abonnenten
+* Integration der WebApp in Android nicht sehr gelungen
+
+
+h3. Rdio
+
+_pro_
+* voller Funktionsumfang in der Web-Applikation
+* eigenständiges Soziales Netzwerk für Musik
+* Benutzer-Playlisten
+* gute Integration der WebApp in Android
+* 7 Tage Testphase der Premiumdienste
+* 30 Tage Testphase, wenn dich ein Rdio-User einlädt
+
+_contra_
+* voller Funktionsumfang _nur_ in der Web-Applikation(?)
+* _Usability-Horror_ in der MobileApp
+* _Usability-Horror_ in der WebApp
+
+
+Rein von der Menge der Punkte spricht hier zwar vieles für Rdio, aber die negativen Aspekte greifen
+für mich besonders, da ich Rdio vorallem Mobil nutzen will und das im Moment einfach viel zu
+anstrengend ist. Was ist denn dieser Usability-Horror fragst du dich vielleicht gerade?
+
+Will ich in der App von Spotify eine Playlist erstellen, ergibt sich folgender Ablauf:
+
+# Ich tippe auf den unteren Reiter "Suchen".
+# Ich tippe auf den obersten Button "Suchen" (duh!).
+# Ich tippe in das endlich erscheinende Suchfeld etwas ein.
+# In der Liste erscheint nun getrennt nach Titel, Alben, Künstler das Suchergebnis.
+# Ich wähle zB ein Album aus.
+# Ich erhalte eine Liste mit Titel auf dem Album und tippe den unteren Button "Zu Playlist hinzufügen"
+# Eine Auswahl erscheint und bietet mir bestehende Playlists und "Als neue Playlist hinzufügen" an.
+# Ich wähle bspw. "Als neue Playlist hinzufügen", die Playlist ist automatisch nach dem Album benannt.
+
+
+Nun zu Rdio:
+
+# Ich tippe auf die Lupe ganz oben und kann direkt einen Interpreten eingeben.
+# Das Suchergebnis erhalte ich schön zusammengefasst nach Interpreten, Alben, User-Playlists, etc.
+# Ich wähle ein Album meine Wahl, indem ich instinktiv auf das Plus-Symbol tippe – nichts passiert.
+# Ich tippe einfach direkt auf den Eintrag des Albums: Ich lande auf dem Startbildschirm und bekomme außerdem den Hinweis, wann meine Testmitgliedschaft abläuft.
+# Ich wiederhole erfolglos die letzten beiden Schritte.
+# Ich tippe auf den Interpreten und bekomme die Meldung: "Eine Netzwerkverbindung ist nötig. Online gehen?"
+# Ja, geh online! WLAN ist doch längst aktiv!
+# Ich erhalte eine Liste der Top-Titel des Interpreten. Alben gibt es von ihm leider keine.
+# Hoffnungsschimmernd gehe ich einen Schritt zurück und versuche es noch mal mit meiner vorherigen Auswahl: Erfolg! Nach Auswahl des Plussymbols erscheint eine Auswahl mit "hinzufügen" und "Sync mit Mobilgerät"
+# Wenn er so fragt, synchronisiere ich das doch gleich.
+# Ein wiederholtes Tippen auf das Plussymbol bietet mir nunmehr nur noch die Möglichkeit, das Album wieder zu entfernen.
+# Ich suche das frisch zugefügte in meiner Sammlung.
+# Ich suche vergeblich nach eine Möglichkeit, das Album zu einer Playlist hinzuzufügen.
+# Um mich bei Stimmung zu halten, wähle ich die scheinbar einzige Möglichkeit, dass Album direkt abzuspielen: den "Shuffle"-Button oben.
+# Ich finde heraus, dass ich die Lieder einzeln zu einer Playlist hinzufügen könnte. WHAT?
+# Ich gebe auf…
+
+
+Muss man noch mehr dazu sagen? Ja! Nämlich wie man Playlists erstellt: Im Webinterface – und _nur da_!
+Aber es macht sich auch dort nicht einfacher, die Musik den Playlists hinzuzufügen. Außerdem braucht
+die Rdio-App auch immer Internetzugriff, bevor sie spielt. Scheinbar werden all die Metadaten aufs
+neue synchronisiert.
+
+Bitte – Rdio-Team: Das geht besser! Wenn es euch hilft, versprech ich euch: Ich wechsel zu Rdio, wenn
+das behoben ist! Aber so kann man damit einfach nicht arbeiten!
+
