@@ -26,4 +26,5 @@ json["articles"].each_pair do |key, article|
 end
 rss.items.reverse!
 
-puts rss.generate
+feed = rss.generate
+File.open('feed.rss', 'w') {|fp| fp.write(feed)}

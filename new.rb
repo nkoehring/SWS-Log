@@ -17,12 +17,9 @@ TAGS: untagged
 
 
 def save_article_info(key, obj)
-  File.open("articles.json", "rw") do |fp|
-    json = JSON.load(fp.read)
-    json[key] = obj
-    fp.rewind
-    fp.write(JSON.dump(json))
-  end
+  json = JSON.load(File.read("articles.json"))
+  json["articles"][key] = obj
+  File.open("articles.json", "w") {|fp| fp.write(JSON.pretty_generate(json))}
 end
 
 def save_article(key, article)
@@ -48,8 +45,12 @@ def new_article
     meta["tags"] = line.split(':', 2)[1].strip.split(' ') if line.start_with? "TAGS:"
   end
 
-  puts "Title: #{meta["title"]}"
-  puts "Tags: #{meta["tags"]}"
+  key = Time.now.to_i.to_s
+  save_article_info(key, meta)
+  save_article(key, article)
+  
+  # update the rss feed
+  `./feed.rb`
 end
 
 new_article

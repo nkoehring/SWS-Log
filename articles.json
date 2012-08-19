@@ -1,83 +1,178 @@
 {
-    "articles": {
-        "1295993606": {
-            "title": "Spaß mit Passwörtern",
-            "tags": ["thoughts", "passwords"]
-        },
-        "1290785622": {
-            "title": "xmms2 list mal aufgepeppt oder: Spiel mir das Lied vom Sed",
-            "tags": ["programming", "shell", "sed", "xmms2"]
-        },
-        "1285839461": {
-            "title": "Tage wie dieser…",
-            "tags": ["life", "work"]
-        },
-        "1280680339": {
-            "title": "über Langeweile, Twitter, VIM und die Fliegenjagd",
-            "tags": ["life", "web", "thoughts", "VIM"]
-        },
-        "1278768050": {
-            "title": "thoughts about human readable data filters",
-            "tags": ["life", "work", "thoughts"]
-        },
-        "1276816036": {
-            "title": "Webcomics",
-            "tags": ["life", "web", "comics"]
-        },
-        "1276385723": {
-            "title": "just as I thought",
-            "tags": ["life", "web", "politics"]
-        },
-        "1276383064": {
-            "title": "Zahras Paradise",
-            "tags": ["life", "web", "politics"]
-        },
-        "1315202798": {
-            "title": "Hallo Welt!",
-            "tags": ["firstOne", "life", "programming", "meta", "Deutsche Bahn", "travel"]
-        },
-        "1316296553": {
-            "title": "Citadel!",
-            "tags": ["server", "citadel", "maildir", "migration"]
-        },
-        "1316865403": {
-            "title": "JavaScript, Musik und Blockade Runner",
-            "tags": ["programming", "javascript", "music", "games", "web"]
-        },
-        "1317002462": {
-            "title": "Größe umgekehrt proportional zu Funktionalität?",
-            "tags": ["windows", "linux", "software", "thoughts"]
-        },
-        "1317175941": {
-            "title": "Die Nächte sind nicht für die Menge gemacht.",
-            "tags": ["thoughts", "music", "life"]
-        },
-        "1317860555": {
-            "title": "S. Jobs",
-            "tags": ["thoughts", "life", "news"]
-        },
-        "1317989447": {
-            "title": "Blutspenderegelung bei den Briten gelockert",
-            "tags": ["news", "world", "discrimination"]
-        },
-        "1318860751": {
-            "title": "The Principles Of Datalove",
-            "tags": ["thoughts", "datalove", "web", "politics", "meta"]
-        },
-        "1324808594": {
-            "title": "Think",
-            "tags": ["life", "programming", "work"]
-        },
-       "1330566345": {
-            "title": "Die Welt ist ein Irrenhaus",
-            "tags": ["life", "work", "berlin", "diaspora"]
-        },
-       "1335091062": {
-            "title": "Spotify vs Rdio",
-            "tags": ["mobile", "music", "streaming", "versus", "usability"]
-        }
+  "articles": {
+    "1295993606": {
+      "title": "Spaß mit Passwörtern",
+      "tags": [
+        "thoughts",
+        "passwords"
+      ]
     },
-
-    "options": {
+    "1290785622": {
+      "title": "xmms2 list mal aufgepeppt oder: Spiel mir das Lied vom Sed",
+      "tags": [
+        "programming",
+        "shell",
+        "sed",
+        "xmms2"
+      ]
+    },
+    "1285839461": {
+      "title": "Tage wie dieser…",
+      "tags": [
+        "life",
+        "work"
+      ]
+    },
+    "1280680339": {
+      "title": "über Langeweile, Twitter, VIM und die Fliegenjagd",
+      "tags": [
+        "life",
+        "web",
+        "thoughts",
+        "VIM"
+      ]
+    },
+    "1278768050": {
+      "title": "thoughts about human readable data filters",
+      "tags": [
+        "life",
+        "work",
+        "thoughts"
+      ]
+    },
+    "1276816036": {
+      "title": "Webcomics",
+      "tags": [
+        "life",
+        "web",
+        "comics"
+      ]
+    },
+    "1276385723": {
+      "title": "just as I thought",
+      "tags": [
+        "life",
+        "web",
+        "politics"
+      ]
+    },
+    "1276383064": {
+      "title": "Zahras Paradise",
+      "tags": [
+        "life",
+        "web",
+        "politics"
+      ]
+    },
+    "1315202798": {
+      "title": "Hallo Welt!",
+      "tags": [
+        "firstOne",
+        "life",
+        "programming",
+        "meta",
+        "Deutsche Bahn",
+        "travel"
+      ]
+    },
+    "1316296553": {
+      "title": "Citadel!",
+      "tags": [
+        "server",
+        "citadel",
+        "maildir",
+        "migration"
+      ]
+    },
+    "1316865403": {
+      "title": "JavaScript, Musik und Blockade Runner",
+      "tags": [
+        "programming",
+        "javascript",
+        "music",
+        "games",
+        "web"
+      ]
+    },
+    "1317002462": {
+      "title": "Größe umgekehrt proportional zu Funktionalität?",
+      "tags": [
+        "windows",
+        "linux",
+        "software",
+        "thoughts"
+      ]
+    },
+    "1317175941": {
+      "title": "Die Nächte sind nicht für die Menge gemacht.",
+      "tags": [
+        "thoughts",
+        "music",
+        "life"
+      ]
+    },
+    "1317860555": {
+      "title": "S. Jobs",
+      "tags": [
+        "thoughts",
+        "life",
+        "news"
+      ]
+    },
+    "1317989447": {
+      "title": "Blutspenderegelung bei den Briten gelockert",
+      "tags": [
+        "news",
+        "world",
+        "discrimination"
+      ]
+    },
+    "1318860751": {
+      "title": "The Principles Of Datalove",
+      "tags": [
+        "thoughts",
+        "datalove",
+        "web",
+        "politics",
+        "meta"
+      ]
+    },
+    "1324808594": {
+      "title": "Think",
+      "tags": [
+        "life",
+        "programming",
+        "work"
+      ]
+    },
+    "1330566345": {
+      "title": "Die Welt ist ein Irrenhaus",
+      "tags": [
+        "life",
+        "work",
+        "berlin",
+        "diaspora"
+      ]
+    },
+    "1335091062": {
+      "title": "Spotify vs Rdio",
+      "tags": [
+        "mobile",
+        "music",
+        "streaming",
+        "versus",
+        "usability"
+      ]
+    },
+    "1345407208": {
+      "title": "scripted blogging",
+      "tags": [
+        "programming",
+        "usability",
+        "web"
+      ]
     }
+  },
+  "options": {
+  }
 }
