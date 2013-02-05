@@ -2,3 +2,8 @@ h1. SWS Weblog
 
 A very simple static weblog, using Javascript to look dynamic.
 
+V2 is a complete rewrite. The feature set doesn't changed but the code is way
+cleaner and has less dependencies. The pure javascript codebase with
+dependencies is now shrinked from about 136k to 64k. I ditched jQuery in favour
+of right.js and completely renounced any MVC library (aka sammy.js).
+
