@@ -14,23 +14,19 @@
     <link rel="author" href="https://about.me/nkoehring" />
     <link rel="alternate" type="application/rss+xml"
        title="RSS" href="https://log.koehr.in/feed.rss" />
-    <link href='https://fonts.googleapis.com/css?family=Antic'
-       rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/sammy.js"></script>
-    <script src="/js/textile.js"></script>
-    <script src="/js/pretty_date.js"></script>
+    <script src="/js/right.js"></script>
     <script src="/js/lib.js"></script>
-    <script src="/js/weblog.js"></script>
+    <script src="/js/weblog.js?v=1"></script>
   </head>
     <body>
-        <header>
-        <!--
-        <a href="/">
-          <img src="/img/headline.png" alt="log.koehr.in">
-        </a>
-        //-->
+      <header>
+        <a href="#" class="home-link">home</a>
+        <div id="spinner">
+          <div id="spinner_1" class="spinner"></div>
+          <div id="spinner_2" class="spinner"></div>
+          <div id="spinner_3" class="spinner"></div>
+        </div>
         <menu>
           <li>
             <a href="#about/">
@@ -46,30 +42,17 @@
           </li>
         </menu>
       </header>
-      <menu id="tags">need javascript to generate tags</menu>
+      <menu id="tags">
+      </menu>
       <div id="content">
         <h1>
-          You will need to enable JavaScript to view this page, sorry.
+          You need to enable JavaScript to view this page, sorry.
           <a class="small" href="/why_javascript.html">But why?!</a>
         </h1>
         <h1>
-          Entschuldigung. Du musst JavaScript aktivieren um diese Seite zu sehen.
+          Entschuldigung, du musst JavaScript aktivieren um diese Seite zu sehen.
           <a class="small" href="/warum_javascript.html">Aber warum?!</a>
         </h1>
-      </div>
-      <div id="development_info">
-        <h2>Wie Google so schön eingeführt hat: BETA!</h2>
-        <p>
-          Hallo. Dieser Blog befindet sich noch in der Entwicklung. Wenn also mal ein Feature nicht
-          funktioniert, dann liegt das schlicht und einfach daran, dass es noch nicht fertig ist.
-        </p>
-        <p>Um einen Artikel zu lesen, einfach auf den Titel klicken.</p>
-        <p>
-          Um die Entwicklungsschritte und den Stand des Blogs nachvollziehen zu können, kannst du
-          dir die <a href="/ditz/html/">ditz Seite</a> oder das <a
-            href="https://github.com/nkoehring/SWS-Log">GIT
-          repo</a> anschauen.
-        </p>
       </div>
     </body>
 </html>
