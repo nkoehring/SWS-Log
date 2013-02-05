@@ -3,6 +3,7 @@ class Weblog
   tags: {}
   options: {}
   events: {}
+  articleFilter: ""
   content: 'content'
   spinner: 'spinner'
   articleTemplate: '''
@@ -21,7 +22,7 @@ class Weblog
     </article>
   '''
   articleTagTemplate: '<li><a href="#{tag}">{tag}</a></li>'
-  tagCloudTagTemplate: '<li style="font-size:{size}"><a href="{tag}">{tag}</a></li>'
+  tagCloudTagTemplate: '<li style="font-size:{size}"><a href="#{tag}">{tag}</a></li>'
 
 
   ## Event handling inspired by MicroEvent
@@ -39,6 +40,22 @@ class Weblog
     e.apply(@, Array.prototype.slice.call(arguments, 1)) for e in @events[event]
 
 
+  # filter for shown articles
+  # uses @articleFilter as filter string
+  #
+  # filter string can be prefixed with "tag:" to directly filter for a tag
+  filtered: (stamp)->
+    filter = @articleFilter.toLowerCase()
+    return false if filter.length == 0
+    console.log "filtering", filter
+
+    if filter.indexOf("tag:") == 0    # it's a tag filter
+      filter = filter.slice(4)
+      return (filter not in @articles[stamp].tags.map("toLowerCase"))
+    else
+      return (@articles[stamp].title.toLowerCase().indexOf(filter) < 0)
+
+
   clearContentArea: ->
     @content.clean()
 
@@ -47,8 +64,10 @@ class Weblog
     total = 0
     unique = 0
     median = 0
+    @tags = []
 
     for stamp,article of @articles
+      continue if @filtered(stamp)
       for tag in article.tags
         total++
         unless tag of @tags
@@ -64,6 +83,11 @@ class Weblog
         tag: tag
         size: (1+(@tags[tag]-median)/5)+"em"
       $('tags').append(template)
+
+
+  filterForTag: (tag)->
+    @articleFilter = "tag:#{tag}"
+    @trigger "article-update"
 
 
   addArticle: (stamp, title, tags)->
@@ -101,16 +125,20 @@ class Weblog
     content = $("c#{id}")
 
     article.addClass('open')
-    #setTimeout (->content.show('slide')), 100
     content.show('slide')
 
     @scrollFx.start
       y: article.position().y
 
 
-  updateArticles: ->
+  update: ->
     for stamp in Object.keys(@articles).sort().reverse()
-      @addArticle(stamp, @articles[stamp].title, @articles[stamp].tags)
+      @addArticle(stamp, @articles[stamp].title, @articles[stamp].tags) unless @filtered(stamp)
+
+
+  reset: ->
+    @articleFilter = ""
+    @trigger 'article-update'
 
 
   closeArticles: ->
@@ -126,6 +154,8 @@ class Weblog
       hash = location.hash.substring(1)
       @trigger 'article-open', hash if hash of @articles
       @trigger 'tags-list', hash if hash of @tags
+    else
+      @reset
 
 
   constructor: ->
@@ -136,11 +166,12 @@ class Weblog
     Xhr.Options.spinner = @spinner
 
     @bind 'article-update', @clearContentArea
-    @bind 'article-update', @updateArticles
+    @bind 'article-update', @update
     @bind 'article-update', @generateTagList
     @bind 'article-open', @closeArticles
     @bind 'article-open', @loadArticle
     @bind 'article-loaded', @openArticle
+    @bind 'tags-list', @filterForTag
     window.addEventListener "hashchange", @checkFragment.bind(@)
 
     Xhr.load 'articles.json',
