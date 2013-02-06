@@ -1,4 +1,6 @@
 Session.vim
 .history*
 js/*.old.js
+*.swp
+*.swo
 
