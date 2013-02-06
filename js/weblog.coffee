@@ -92,8 +92,8 @@ class Weblog
 
   addArticle: (stamp, title, tags)->
     self = this
-    templated_tags = []
-    templated_tags.push(tpl(@articleTagTemplate, {tag:t})) for t in tags
+    templated_tags = ""
+    templated_tags += tpl(@articleTagTemplate, {tag:t}) for t in tags
     template = tpl @articleTemplate,
       id: stamp
       title: title
@@ -110,7 +110,8 @@ class Weblog
       content = $("c#{id}")
       Xhr.load "articles/#{id}",
         onSuccess: (req)->
-          content.append textile(req.responseText)
+          self.articles[id].content = textile(req.responseText)
+          content.append self.articles[id].content
           article.addClass('loaded')
           self.trigger "article-loaded", id
           
@@ -149,13 +150,14 @@ class Weblog
 
   checkFragment: (e)->
     @closeArticles()
-    if location.hash
+    hash = location.hash.replace(" ", "")
+    if hash.length > 0
       # check for article ids first, then for tags
-      hash = location.hash.substring(1)
+      hash = hash.substring(1)
       @trigger 'article-open', hash if hash of @articles
       @trigger 'tags-list', hash if hash of @tags
     else
-      @reset
+      @reset()
 
 
   constructor: ->

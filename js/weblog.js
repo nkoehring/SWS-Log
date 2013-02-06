@@ -118,12 +118,12 @@
     Weblog.prototype.addArticle = function(stamp, title, tags) {
       var self, t, template, templated_tags, _i, _len;
       self = this;
-      templated_tags = [];
+      templated_tags = "";
       for (_i = 0, _len = tags.length; _i < _len; _i++) {
         t = tags[_i];
-        templated_tags.push(tpl(this.articleTagTemplate, {
+        templated_tags += tpl(this.articleTagTemplate, {
           tag: t
-        }));
+        });
       }
       template = tpl(this.articleTemplate, {
         id: stamp,
@@ -145,7 +145,8 @@
         content = $("c" + id);
         return Xhr.load("articles/" + id, {
           onSuccess: function(req) {
-            content.append(textile(req.responseText));
+            self.articles[id].content = textile(req.responseText);
+            content.append(self.articles[id].content);
             article.addClass('loaded');
             return self.trigger("article-loaded", id);
           },
@@ -199,8 +200,9 @@
     Weblog.prototype.checkFragment = function(e) {
       var hash;
       this.closeArticles();
-      if (location.hash) {
-        hash = location.hash.substring(1);
+      hash = location.hash.replace(" ", "");
+      if (hash.length > 0) {
+        hash = hash.substring(1);
         if (hash in this.articles) {
           this.trigger('article-open', hash);
         }
@@ -208,7 +210,7 @@
           return this.trigger('tags-list', hash);
         }
       } else {
-        return this.reset;
+        return this.reset();
       }
     };
 

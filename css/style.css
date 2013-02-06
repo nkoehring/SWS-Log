@@ -122,7 +122,8 @@ article.open .title .date { display: none; }
 article .info_block {
   display: inline-block;
   float: right;
-  width: 320px;
+  width: 280px;
+  margin-left: 20px;
   color: #AAA;
   font-weight: bold;
   font-size: 1.8em;
@@ -131,7 +132,9 @@ article .info_block .pretty_date:before { content: "created"; margin-right: 0.33
 article .info_block .author:before { content: "by"; margin-right: 0.333em; }
 article .info_block .tags:before { content: "in"; margin-right: 0.333em; }
 article .info_block .tags { margin:0; padding:0; }
-article .info_block .tags li { display: inline-block; padding: 0 0.5em 0 0; }
+article .info_block .tags li { display: inline-block; padding: 0 0.2em 0 0; }
+article .info_block .tags li:after { content: "," }
+article .info_block .tags li:last-child:after { content: "" }
 
 .effect_dummy {
   margin-top: -16px;
