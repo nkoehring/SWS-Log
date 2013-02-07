@@ -4,8 +4,10 @@ class Weblog
   options: {}
   events: {}
   articleFilter: ""
-  content: 'content'
-  spinner: 'spinner'
+  contentElement: 'content'
+  spinnerElement: 'spinner'
+  filterElement: 'filter'
+  filterResetElement: 'filter-reset'
   articleTemplate: '''
     <article id="a{id}">
       <a href="#{id}" class="title">
@@ -35,9 +37,9 @@ class Weblog
     return false unless event of @events
     @events[event].splice(@events[event].indexOf(func), 1)
 
-  trigger: (event)->
+  trigger: (event, args...)->
     return false unless event of @events
-    e.apply(@, Array.prototype.slice.call(arguments, 1)) for e in @events[event]
+    e.apply(@, args) for e in @events[event]
 
 
   # filter for shown articles
@@ -47,7 +49,6 @@ class Weblog
   filtered: (stamp)->
     filter = @articleFilter.toLowerCase()
     return false if filter.length == 0
-    console.log "filtering", filter
 
     if filter.indexOf("tag:") == 0    # it's a tag filter
       filter = filter.slice(4)
@@ -56,8 +57,33 @@ class Weblog
       return (@articles[stamp].title.toLowerCase().indexOf(filter) < 0)
 
 
+  updateFilter: (new_filter, tag=false)->
+    new_filter = new_filter.trim()
+
+    if new_filter.length > 0
+      if tag
+        @filterElement.addClass "tag"
+        @filterElement.addClass "tag"
+      else
+        @filterElement.removeClass "tag"
+
+      @filterElement.update(new_filter)
+      @filterElement.show()
+      @filterResetElement.setStyle
+        display: "inline-block"
+
+      new_filter = "tag:#{new_filter}" if tag
+    else
+      @filterElement.update("")
+      @filterElement.hide()
+      @filterResetElement.setStyle
+        display: "none"
+
+    @articleFilter = new_filter
+
+
   clearContentArea: ->
-    @content.clean()
+    @contentElement.clean()
 
 
   generateTagList: ->
@@ -67,7 +93,7 @@ class Weblog
     @tags = []
 
     for stamp,article of @articles
-      continue if @filtered(stamp)
+      continue if @filtered(stamp)  #TODO: do we really want that?
       for tag in article.tags
         total++
         unless tag of @tags
@@ -86,12 +112,11 @@ class Weblog
 
 
   filterForTag: (tag)->
-    @articleFilter = "tag:#{tag}"
+    @trigger "filter-update", tag, true
     @trigger "article-update"
 
 
   addArticle: (stamp, title, tags)->
-    self = this
     templated_tags = ""
     templated_tags += tpl(@articleTagTemplate, {tag:t}) for t in tags
     template = tpl @articleTemplate,
@@ -100,20 +125,19 @@ class Weblog
       date: prettyDate(new Date(parseInt(stamp)*1000)) # yes, millis since epoch
       tags: templated_tags
 
-    @content.append(template)
+    @contentElement.append(template)
 
 
   loadArticle: (id, force=false)->
     article = $("a#{id}")
     if force or not article.hasClass('loaded')
-      self = this
       content = $("c#{id}")
       Xhr.load "articles/#{id}",
-        onSuccess: (req)->
-          self.articles[id].content = textile(req.responseText)
-          content.append self.articles[id].content
+        onSuccess: (req)=>
+          @articles[id].content = textile(req.responseText)
+          content.append @articles[id].content
           article.addClass('loaded')
-          self.trigger "article-loaded", id
+          @trigger "article-loaded", id
           
         onFailure: (e, req)->
           console.log "failed to load article #{id}"
@@ -138,7 +162,7 @@ class Weblog
 
 
   reset: ->
-    @articleFilter = ""
+    @trigger 'filter-update', ""
     @trigger 'article-update'
 
 
@@ -154,36 +178,43 @@ class Weblog
     if hash.length > 0
       # check for article ids first, then for tags
       hash = hash.substring(1)
-      @trigger 'article-open', hash if hash of @articles
-      @trigger 'tags-list', hash if hash of @tags
+      if hash of @articles
+        @trigger 'article-open', hash
+      else if hash of @tags
+        @trigger 'tags-list', hash
+      else
+        @trigger 'filter-update', hash
     else
       @reset()
 
 
   constructor: ->
-    self = this
-    @content = $(@content)
-    @spinner = $(@spinner)
+    @contentElement = $(@contentElement)
+    @spinnerElement = $(@spinnerElement)
+    @filterElement = $(@filterElement)
+    @filterResetElement = $(@filterResetElement)
     @scrollFx = new Fx.Scroll(document.body)
-    Xhr.Options.spinner = @spinner
+    Xhr.Options.spinner = @spinnerElement
 
     @bind 'article-update', @clearContentArea
     @bind 'article-update', @update
     @bind 'article-update', @generateTagList
-    @bind 'article-open', @closeArticles
-    @bind 'article-open', @loadArticle
+    @bind 'article-open',   @closeArticles
+    @bind 'article-open',   @loadArticle
     @bind 'article-loaded', @openArticle
-    @bind 'tags-list', @filterForTag
+    @bind 'tags-list',      @filterForTag
+    @bind 'filter-update',  @updateFilter
     window.addEventListener "hashchange", @checkFragment.bind(@)
 
     Xhr.load 'articles.json',
-      onSuccess: (req)->
-        self.articles = req.responseJSON.articles
-        self.options = req.responseJSON.options
-        self.trigger 'article-update'
-      onFailure: (e, req)->
-        @content.update("<h1>Failed to load articles!</h1>")
-        @content.append("<p>#{req.status} – #{req.statusText}</p>")
+      onSuccess: (req)=>
+        @articles = req.responseJSON.articles
+        @options = req.responseJSON.options
+        @trigger 'article-update'
+        @checkFragment()
+      onFailure: (e, req)=>
+        @contentElement.update("<h1>Failed to load articles!</h1>")
+        @contentElement.append("<p>#{req.status} – #{req.statusText}</p>")
 
 
 $(document).onReady ->

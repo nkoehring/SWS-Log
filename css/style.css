@@ -31,7 +31,7 @@ header a.home-link {
 }
 header menu {
   position: absolute;
-  bottom: -14px;
+  bottom: -1em;
   right: 20px;
   font-size: 0.9em;
   line-height: 1.1em;
@@ -43,9 +43,11 @@ header menu li {
   background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD));
   background: -moz-linear-gradient(top, #FFF, #DDD);
   text-align: center;
+  width: 130px;
 }
+header menu li#filter-reset { display: none; }
+header menu li#filter-reset a { color: red; }
 header menu li:hover {
-  color: black;
   background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#AAD));
   background: -moz-linear-gradient(top, #FFF, #AAD);
 }
@@ -53,22 +55,36 @@ header menu li:hover .effect_dummy {
   margin-top: 0px;
   color: inherit;
 }
+header menu li .effect_dummy {
+  margin-top: -16px;
+  color: transparent;
+  transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+}
 
-menu#tags {
-  display: block;
+#filter { display: none; }
+menu#tags { display: block; }
+#filter, menu#tags {
   max-width: 960px;
   text-align: right;
-  word-spacing: -0.25em;
+  margin-top: .5em;
   padding-left: 0;
 }
-menu#tags:before {
-  content: "tags:";
+#filter, menu#tags:before {
   color: #AAA;
   font-weight: bold;
   font-size: 2em;
   vertical-align: middle;
 }
+#filter:before { content: 'filtered for "'; }
+#filter.tag:before { content: 'filtered for tag "'; }
+#filter:after { content: '" '; }
+menu#tags:before { content: "tags: "; }
+menu#tags.filtered:before { content: "remaining tags: "; }
 menu#tags li {
+  word-spacing: -0.25em;
   display: inline-block;
   margin: 0 0.2em;
 }
@@ -135,15 +151,6 @@ article .info_block .tags { margin:0; padding:0; }
 article .info_block .tags li { display: inline-block; padding: 0 0.2em 0 0; }
 article .info_block .tags li:after { content: "," }
 article .info_block .tags li:last-child:after { content: "" }
-
-.effect_dummy {
-  margin-top: -16px;
-  color: transparent;
-  transition: all 0.5s ease-out;
-  -moz-transition: all 0.5s ease-out;
-  -webkit-transition: all 0.5s ease-out;
-  -o-transition: all 0.5s ease-out;
-}
 
 table { background: #EEE; padding: 0.5em; }
 td { border: 1px dotted #AAA; padding: 0 1em; }

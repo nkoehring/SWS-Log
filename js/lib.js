@@ -1,3 +1,10 @@
+// String.trim for old browsers
+if(typeof(String.prototype.trim) === "undefined") {
+  String.prototype.trim = function() {
+    return String(this).replace(/^\s+|\s+$/g, '');
+  };
+}
+
 // micro templating engine by Thomas Fuchs
 // http://mir.aculo.us/2011/03/09/little-helpers-a-tweet-sized-javascript-templating-engine/
 function tpl(s,d){
