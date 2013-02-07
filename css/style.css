@@ -6,8 +6,6 @@
 }
 
 body {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: none;
   font: 18px/1.5em 'Antic', Cambria, Georgia, serif;
   margin: 2em 2.3em;
   color: #333;
