@@ -4,10 +4,18 @@
 <title>koehrs webLog</title>
 <link>http://log.koehr.in</link>
 <description>Mein WebLog, mal persönlich, mal philosophisch, mal technisch.</description>
-<pubDate>2013-02-07 20:06:33 +0100</pubDate>
+<pubDate>2013-02-07 20:13:14 +0100</pubDate>
 <language>en-us</language>
 <ttl>60</ttl>
 
+<item>
+<title>Über mich und diesen Blog</title>
+<link>https://log.koehr.in/#/1360258763</link>
+<description>Was ich irgendwie nie gemacht habe, seit ich blogge ist so eine klassische
+übermich-Seite. Also hole ich das jetzt nach.</description>
+<pubDate>2013-02-07 18:39:23 +0100</pubDate>
+<guid isPermaLink="true">https://log.koehr.in/#/1360258763</guid>
+</item>
 <item>
 <title>scripted blogging</title>
 <link>https://log.koehr.in/#/1345407208</link>
@@ -164,14 +172,6 @@ wunderschönen Antlitz, so friedlich und doch geschäftig. W…</description>
 <description>Wie wir alle benutze auch ich Passwörter oder evtl. besser Mantras zum Schutze meiner Privatsphäre, der Einstellungen diverser (Web-)Dienste und manchmal auch nur aus purer Paranoidität. Und gerade wegen letzterem habe ich mal geschaut, ob es Übersi…</description>
 <pubDate>2011-01-25 23:13:26 +0100</pubDate>
 <guid isPermaLink="true">https://log.koehr.in/#/1295993606</guid>
-</item>
-<item>
-<title>Über mich und diesen Blog</title>
-<link>https://log.koehr.in/#/1360258763</link>
-<description>Was ich irgendwie nie gemacht habe, seit ich blogge ist so eine klassische
-übermich-Seite. Also hole ich das jetzt nach.</description>
-<pubDate>2013-02-07 18:39:23 +0100</pubDate>
-<guid isPermaLink="true">https://log.koehr.in/#/1360258763</guid>
 </item>
 
 </channel>
