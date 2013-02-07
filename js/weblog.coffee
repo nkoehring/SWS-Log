@@ -208,6 +208,7 @@ class Weblog
 
     Xhr.load 'articles.json',
       onSuccess: (req)=>
+        req.responseJSON = JSON.parse(req.responseText) unless req.responseJSON
         @articles = req.responseJSON.articles
         @options = req.responseJSON.options
         @trigger 'article-update'

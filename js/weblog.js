@@ -268,6 +268,9 @@
       window.addEventListener("hashchange", this.checkFragment.bind(this));
       Xhr.load('articles.json', {
         onSuccess: function(req) {
+          if (!req.responseJSON) {
+            req.responseJSON = JSON.parse(req.responseText);
+          }
           _this.articles = req.responseJSON.articles;
           _this.options = req.responseJSON.options;
           _this.trigger('article-update');
