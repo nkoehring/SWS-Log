@@ -4,10 +4,19 @@
 <title>koehrs webLog</title>
 <link>http://log.koehr.in</link>
 <description>Mein WebLog, mal persönlich, mal philosophisch, mal technisch.</description>
-<pubDate>2013-02-07 20:13:14 +0100</pubDate>
+<pubDate>2013-02-08 01:03:37 +0100</pubDate>
 <language>en-us</language>
 <ttl>60</ttl>
 
+<item>
+<title>REMOVE ALL THE LIBRARIES!</title>
+<link>https://log.koehr.in/#/1360281816</link>
+<description>All the things are evolved very much today. We have so much tools and
+frameworks to make the daily developers life easier, that a complete overview
+is quite impossible.</description>
+<pubDate>2013-02-08 01:03:36 +0100</pubDate>
+<guid isPermaLink="true">https://log.koehr.in/#/1360281816</guid>
+</item>
 <item>
 <title>Über mich und diesen Blog</title>
 <link>https://log.koehr.in/#/1360258763</link>

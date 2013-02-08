@@ -1,0 +1,35 @@
+All the things are evolved very much today. We have so much tools and
+frameworks to make the daily developers life easier, that a complete overview
+is quite impossible.
+
+But here sticks the problem: Many developers overuse these tools and most
+probably cannot live without them anymore. This leads to in fact tiny projects
+grown huge just for the comfort of their developers.
+
+h2. Compfort is not a bad thing!
+
+Actually, there are some good reasons for developer comfort. Most important are
+of course speed and maintainability. But there are counter-examples. The
+android app of a quite popular todo list for example is about ten megabytes in
+size. But it's still just a todo app. Alot of websites are filled up with tons
+of javascript libraries, using only some percent of their functionality. With
+Visual Studio vom Microsoft you can click a RPC connected client/server thing
+in minutes with just a couple lines of code written by yourself. The final
+application sizes a couple of megabytes but has the functionality of some tens
+of kilobytes.
+
+
+h2. REMOVE ALL THE LIBRARIES!
+
+Rather not, of course. But rummage through your dependencies and look which
+ones you really need and how much of them. Maybe there is a minor enhancement
+in developers comfort which costs consumers a significant amount of memory or
+bandwidth. Maybe you can skip this monstrous MVC framework for your Javascript
+web project and just use a tiny set of tools combined for all the functionality
+you need. Be a developer who can handle frameworks and helpful tools BUT knows
+what's behind the scenes. Don't just stick together an app if you are not able
+to do it without the mighty IDE.
+
+Of course, bandwidth, disk space and computing power are cheap these days. But
+if we forget how to build an application, we will not be able to innovate any
+further.
