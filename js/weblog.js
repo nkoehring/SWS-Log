@@ -24,7 +24,7 @@
 
     Weblog.prototype.filterResetElement = 'filter-reset';
 
-    Weblog.prototype.articleTemplate = '<article id="a{id}">\n  <a href="#{id}" class="title">\n    <span class="date">{date}</span>\n    <h2>{title}</h2>\n  </a>\n  <div id="c{id}" class="content">\n    <div class="info_block">\n      <div class="pretty_date">{date}</div>\n      <div class="author"><a href="http://about.me/nkoehring">nkoehring</a></div>\n      <ul id="t{id}" class="tags">{tags}</ul>\n    </div>\n  </div>\n</article>';
+    Weblog.prototype.articleTemplate = '<article id="a{id}">\n  <a href="#{id}" class="title">\n    <span class="date">{date}</span>\n    <h2>{title}</h2>\n  </a>\n  <div id="c{id}" class="content">\n    <div class="info_block">\n      <div class="pretty_date">{date}</div>\n      <div class="author"><a href="http://about.me/nkoehring">nkoehring</a></div>\n      <ul id="t{id}" class="tags">{tags}</ul>\n    </div>\n  </div>\n  <div class="spinner">-</div>\n</article>';
 
     Weblog.prototype.articleTagTemplate = '<li><a href="#{tag}">{tag}</a></li>';
 
@@ -165,7 +165,8 @@
         date: prettyDate(new Date(parseInt(stamp) * 1000)),
         tags: templated_tags
       });
-      return this.contentElement.append(template);
+      this.contentElement.append(template);
+      return this.trigger("article-load", stamp);
     };
 
     Weblog.prototype.loadArticle = function(id, force) {
@@ -260,9 +261,9 @@
       this.bind('article-update', this.clearContentArea);
       this.bind('article-update', this.update);
       this.bind('article-update', this.generateTagList);
+      this.bind('article-load', this.loadArticle);
       this.bind('article-open', this.closeArticles);
-      this.bind('article-open', this.loadArticle);
-      this.bind('article-loaded', this.openArticle);
+      this.bind('article-open', this.openArticle);
       this.bind('tags-list', this.filterForTag);
       this.bind('filter-update', this.updateFilter);
       window.addEventListener("hashchange", this.checkFragment.bind(this));

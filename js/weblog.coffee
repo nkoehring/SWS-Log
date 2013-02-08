@@ -21,6 +21,7 @@ class Weblog
           <ul id="t{id}" class="tags">{tags}</ul>
         </div>
       </div>
+      <div class="spinner">-</div>
     </article>
   '''
   articleTagTemplate: '<li><a href="#{tag}">{tag}</a></li>'
@@ -126,6 +127,7 @@ class Weblog
       tags: templated_tags
 
     @contentElement.append(template)
+    @trigger "article-load", stamp
 
 
   loadArticle: (id, force=false)->
@@ -199,9 +201,9 @@ class Weblog
     @bind 'article-update', @clearContentArea
     @bind 'article-update', @update
     @bind 'article-update', @generateTagList
+    @bind 'article-load',   @loadArticle
     @bind 'article-open',   @closeArticles
-    @bind 'article-open',   @loadArticle
-    @bind 'article-loaded', @openArticle
+    @bind 'article-open',   @openArticle
     @bind 'tags-list',      @filterForTag
     @bind 'filter-update',  @updateFilter
     window.addEventListener "hashchange", @checkFragment.bind(@)
