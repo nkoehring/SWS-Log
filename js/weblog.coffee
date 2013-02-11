@@ -118,54 +118,64 @@ class Weblog
 
 
   addArticle: (stamp, title, tags)->
-    templated_tags = ""
-    templated_tags += tpl(@articleTagTemplate, {tag:t}) for t in tags
-    template = tpl @articleTemplate,
-      id: stamp
-      title: title
-      date: prettyDate(new Date(parseInt(stamp)*1000)) # yes, millis since epoch
-      tags: templated_tags
+    articleElement = $("a#{stamp}")
+    if articleElement?
+      @trigger "article-load", stamp unless @articles[stamp].content?
+      articleElement.show()
+    else
+      article_tags = ""
+      article_tags += tpl(@articleTagTemplate, {tag:t}) for t in tags
+      template = tpl @articleTemplate,
+        id: stamp
+        title: title
+        date: prettyDate(new Date(parseInt(stamp)*1000)) # yes, millis since epoch
+        tags: article_tags
+      @contentElement.append(template)
 
-    @contentElement.append(template)
-    @trigger "article-load", stamp
 
 
-  loadArticle: (id, force=false)->
-    article = $("a#{id}")
-    if force or not article.hasClass('loaded')
-      content = $("c#{id}")
+  loadArticle: (id)->
+    if @articles[id].content?
+      @trigger "article-loaded", id
+    else
+      articleElement = $("a#{id}")
+      contentElement = $("c#{id}")
       Xhr.load "articles/#{id}",
         onSuccess: (req)=>
           @articles[id].content = textile(req.responseText)
-          content.append @articles[id].content
-          article.addClass('loaded')
+          contentElement.append @articles[id].content
+          articleElement.removeClass('failure')
+          articleElement.addClass('success')
           @trigger "article-loaded", id
           
         onFailure: (e, req)->
           console.log "failed to load article #{id}"
-    else
-      @trigger "article-loaded", id
+          articleElement.removeClass('success')
+          articleElement.addClass('failure')
+          contentElement.append '<p class="error">Wasn\'t able to load this article :(</p>'
 
 
   openArticle: (id)->
-    article = $("a#{id}")
-    content = $("c#{id}")
+    articleElement = $("a#{id}")
+    contentElement = $("c#{id}")
 
-    article.addClass('open')
-    content.show('slide')
+    articleElement.addClass('open')
+    contentElement.show('slide')
 
     @scrollFx.start
-      y: article.position().y
+      y: articleElement.position().y
 
 
   update: ->
     for stamp in Object.keys(@articles).sort().reverse()
-      @addArticle(stamp, @articles[stamp].title, @articles[stamp].tags) unless @filtered(stamp)
+      @addArticle(stamp, @articles[stamp].title, @articles[stamp].tags)
+      $("a#{stamp}").hide() if @filtered(stamp)
 
 
   reset: ->
     @trigger 'filter-update', ""
     @trigger 'article-update'
+    @closeArticles()
 
 
   closeArticles: ->
@@ -175,7 +185,7 @@ class Weblog
 
 
   checkFragment: (e)->
-    @closeArticles()
+    @reset()
     hash = location.hash.replace(" ", "")
     if hash.length > 0
       # check for article ids first, then for tags
@@ -186,8 +196,6 @@ class Weblog
         @trigger 'tags-list', hash
       else
         @trigger 'filter-update', hash
-    else
-      @reset()
 
 
   constructor: ->
@@ -198,7 +206,7 @@ class Weblog
     @scrollFx = new Fx.Scroll(document.body)
     Xhr.Options.spinner = @spinnerElement
 
-    @bind 'article-update', @clearContentArea
+    @clearContentArea()
     @bind 'article-update', @update
     @bind 'article-update', @generateTagList
     @bind 'article-load',   @loadArticle

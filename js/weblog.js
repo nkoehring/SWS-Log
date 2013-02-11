@@ -151,57 +151,65 @@
     };
 
     Weblog.prototype.addArticle = function(stamp, title, tags) {
-      var t, template, templated_tags, _i, _len;
-      templated_tags = "";
-      for (_i = 0, _len = tags.length; _i < _len; _i++) {
-        t = tags[_i];
-        templated_tags += tpl(this.articleTagTemplate, {
-          tag: t
+      var articleElement, article_tags, t, template, _i, _len;
+      articleElement = $("a" + stamp);
+      if (articleElement != null) {
+        if (this.articles[stamp].content == null) {
+          this.trigger("article-load", stamp);
+        }
+        return articleElement.show();
+      } else {
+        article_tags = "";
+        for (_i = 0, _len = tags.length; _i < _len; _i++) {
+          t = tags[_i];
+          article_tags += tpl(this.articleTagTemplate, {
+            tag: t
+          });
+        }
+        template = tpl(this.articleTemplate, {
+          id: stamp,
+          title: title,
+          date: prettyDate(new Date(parseInt(stamp) * 1000)),
+          tags: article_tags
         });
+        return this.contentElement.append(template);
       }
-      template = tpl(this.articleTemplate, {
-        id: stamp,
-        title: title,
-        date: prettyDate(new Date(parseInt(stamp) * 1000)),
-        tags: templated_tags
-      });
-      this.contentElement.append(template);
-      return this.trigger("article-load", stamp);
     };
 
-    Weblog.prototype.loadArticle = function(id, force) {
-      var article, content,
+    Weblog.prototype.loadArticle = function(id) {
+      var articleElement, contentElement,
         _this = this;
-      if (force == null) {
-        force = false;
-      }
-      article = $("a" + id);
-      if (force || !article.hasClass('loaded')) {
-        content = $("c" + id);
+      if (this.articles[id].content != null) {
+        return this.trigger("article-loaded", id);
+      } else {
+        articleElement = $("a" + id);
+        contentElement = $("c" + id);
         return Xhr.load("articles/" + id, {
           onSuccess: function(req) {
             _this.articles[id].content = textile(req.responseText);
-            content.append(_this.articles[id].content);
-            article.addClass('loaded');
+            contentElement.append(_this.articles[id].content);
+            articleElement.removeClass('failure');
+            articleElement.addClass('success');
             return _this.trigger("article-loaded", id);
           },
           onFailure: function(e, req) {
-            return console.log("failed to load article " + id);
+            console.log("failed to load article " + id);
+            articleElement.removeClass('success');
+            articleElement.addClass('failure');
+            return contentElement.append('<p class="error">Wasn\'t able to load this article :(</p>');
           }
         });
-      } else {
-        return this.trigger("article-loaded", id);
       }
     };
 
     Weblog.prototype.openArticle = function(id) {
-      var article, content;
-      article = $("a" + id);
-      content = $("c" + id);
-      article.addClass('open');
-      content.show('slide');
+      var articleElement, contentElement;
+      articleElement = $("a" + id);
+      contentElement = $("c" + id);
+      articleElement.addClass('open');
+      contentElement.show('slide');
       return this.scrollFx.start({
-        y: article.position().y
+        y: articleElement.position().y
       });
     };
 
@@ -211,8 +219,9 @@
       _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         stamp = _ref[_i];
-        if (!this.filtered(stamp)) {
-          _results.push(this.addArticle(stamp, this.articles[stamp].title, this.articles[stamp].tags));
+        this.addArticle(stamp, this.articles[stamp].title, this.articles[stamp].tags);
+        if (this.filtered(stamp)) {
+          _results.push($("a" + stamp).hide());
         } else {
           _results.push(void 0);
         }
@@ -222,7 +231,8 @@
 
     Weblog.prototype.reset = function() {
       this.trigger('filter-update', "");
-      return this.trigger('article-update');
+      this.trigger('article-update');
+      return this.closeArticles();
     };
 
     Weblog.prototype.closeArticles = function() {
@@ -234,7 +244,7 @@
 
     Weblog.prototype.checkFragment = function(e) {
       var hash;
-      this.closeArticles();
+      this.reset();
       hash = location.hash.replace(" ", "");
       if (hash.length > 0) {
         hash = hash.substring(1);
@@ -245,8 +255,6 @@
         } else {
           return this.trigger('filter-update', hash);
         }
-      } else {
-        return this.reset();
       }
     };
 
@@ -258,7 +266,7 @@
       this.filterResetElement = $(this.filterResetElement);
       this.scrollFx = new Fx.Scroll(document.body);
       Xhr.Options.spinner = this.spinnerElement;
-      this.bind('article-update', this.clearContentArea);
+      this.clearContentArea();
       this.bind('article-update', this.update);
       this.bind('article-update', this.generateTagList);
       this.bind('article-load', this.loadArticle);

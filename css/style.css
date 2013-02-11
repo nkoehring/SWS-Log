@@ -100,7 +100,7 @@ a:visited { color: #337; }
 a:hover { color: #33F; }
 
 article { position: relative; border-bottom: 1px solid #AAA; }
-article .spinner {
+article .spinner, article.success:after, article.failure:after {
   position: absolute;
   top: 60%;
   right: 0;
@@ -108,6 +108,8 @@ article .spinner {
   height: 1em;
   margin: 0.1em;
   background: transparent;
+}
+article .spinner {
   border: 2px dotted #aaa;
   border-radius: 1em;
   color: transparent;
@@ -117,9 +119,9 @@ article .spinner {
   -o-animation: rotate 2s infinite linear;
   -ms-animation: rotate 2s infinite linear;
 }
-article.loaded .spinner {
-  display: none;
-}
+article.success .spinner, article.failure .spinner { display: none; }
+article.success:after { content: "✓"; color: #EEE; font-weight: bold; }
+article.failure:after { content: "✗"; color: #F44; font-weight: bold; }
 
 article .title .date {
   display: inline-block;
@@ -131,9 +133,10 @@ article .title .date {
 article .title h2 { display: inline-block; }
 
 article .content { display: none; }
-article .content > p { width: 540px; padding-bottom: 0.2em; }
-article .content > blockquote { width: 460px; }
-article .content:first-letter {
+article.open .content > p { width: 540px; padding-bottom: 0.2em; }
+article.open .content > p.error { font-weight: bold; }
+article.open .content > blockquote { width: 460px; }
+article.open .content:first-letter {
   float: left;
   font-size: 3em;
   line-height: 0.76em;
@@ -151,7 +154,7 @@ article.open {
 }
 article.open .title h2 { font-size: 2em; text-align: center; margin-bottom: 1em; }
 article.open .title .date { display: none; }
-article .info_block {
+article.open .info_block {
   display: inline-block;
   float: right;
   width: 280px;
