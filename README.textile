@@ -1,9 +1,22 @@
 h1. SWS Weblog
 
+h2. summary
+
 A very simple static weblog, using Javascript to look dynamic.
 
-V2 is a complete rewrite. The feature set doesn't changed but the code is way
-cleaner and has less dependencies. The pure javascript codebase with
-dependencies is now shrinked from about 136k to 64k. I ditched jQuery in favour
-of right.js and completely renounced any MVC library (aka sammy.js).
+V2 is a complete rewrite and is supposed to be way lighter and faster. The pure
+javascript codebase with dependencies shrunk from about 136k to 64k.
+
+h2. v2 waypoints
+
+What does v2 better than v1?
+
+# Shrink Javascript codebase and renounce any JS MVC framework monsters.  ✓
+# Remove jQuery and use Right.js (because I can).  ✓
+# Event driven.  ✓
+# Central filter functionality (for tags, etc).  ✓
+# No unnecessary reloading of articles.  ✓
+# Preloading of articles (can be turned on and off via settings).  ✓
+# Switchable themes for the lulz.
+
 
