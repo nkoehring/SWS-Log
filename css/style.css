@@ -13,12 +13,22 @@ body {
   width: 960px;
   margin: auto;
 }
+
+body.dark {
+  color: #FAFAFA;
+  background: black url(/img/cartographer.png) top left repeat scroll;
+}
+
 header {
   position: relative;
   display: block;
   background: black url(/img/typography.png) center no-repeat scroll;
   height: 120px;
   cursor: pointer;
+}
+body.dark header {
+  background: black url(/img/slow_shutter_light.png) center no-repeat scroll;
+  border-bottom: 1px solid #333;
 }
 header a.home-link {
   position:absolute;
@@ -98,8 +108,10 @@ h3 { font-size: 1.1em; font-weight: bold; }
 a { color: #33C; text-decoration: none; }
 a:visited { color: #337; }
 a:hover { color: #33F; }
+body.dark a { color: #2FC2EF; }
 
 article { position: relative; border-bottom: 1px solid #AAA; }
+body.dark article { border-bottom: 1px solid #333; }
 article .spinner, article.success:after, article.failure:after {
   position: absolute;
   top: 60%;
@@ -122,6 +134,8 @@ article.autoload .spinner {
 article.success .spinner, article.failure .spinner { display: none; }
 article.success:after { content: "✓"; color: #EEE; font-weight: bold; }
 article.failure:after { content: "✗"; color: #F44; font-weight: bold; }
+body.dark article.success:after { color: #111; }
+body.dark article.failure:after { color: #800; }
 
 article .title .date {
   display: inline-block;
@@ -163,6 +177,12 @@ article.open .info_block {
   font-weight: bold;
   font-size: 1.8em;
 }
+body.dark article.open {
+  //background: #323A40 url(/img/cartographer.png) top left repeat scroll;
+  background: #323A40;
+  border: 5px dotted rgba(255,255,255,.1);
+}
+
 article .info_block .pretty_date:before { content: "created"; margin-right: 0.333em; }
 article .info_block .author:before { content: "by"; margin-right: 0.333em; }
 article .info_block .tags:before { content: "in"; margin-right: 0.333em; }
