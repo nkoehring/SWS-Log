@@ -21,7 +21,7 @@ class Weblog
           <ul id="t{id}" class="tags">{tags}</ul>
         </div>
       </div>
-      <div class="spinner">-</div>
+      <div class="spinner">&nbsp;</div>
     </article>
   '''
   articleTagTemplate: '<li><a href="#{tag}">{tag}</a></li>'
@@ -120,7 +120,7 @@ class Weblog
   addArticle: (stamp, title, tags)->
     articleElement = $("a#{stamp}")
     if articleElement?
-      @trigger "article-load", stamp unless @articles[stamp].content?
+      @trigger "article-load", stamp if @options.autoload
       articleElement.show()
     else
       article_tags = ""
@@ -131,6 +131,7 @@ class Weblog
         date: prettyDate(new Date(parseInt(stamp)*1000)) # yes, millis since epoch
         tags: article_tags
       @contentElement.append(template)
+      $$("#a#{stamp} .spinner").show if @options.autoload
 
 
 
@@ -156,6 +157,8 @@ class Weblog
 
 
   openArticle: (id)->
+    @trigger "article-load", id unless @options.autoload
+    
     articleElement = $("a#{id}")
     contentElement = $("c#{id}")
 

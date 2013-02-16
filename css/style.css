@@ -109,7 +109,7 @@ article .spinner, article.success:after, article.failure:after {
   margin: 0.1em;
   background: transparent;
 }
-article .spinner {
+article.autoload .spinner {
   border: 2px dotted #aaa;
   border-radius: 1em;
   color: transparent;

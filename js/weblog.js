@@ -24,7 +24,7 @@
 
     Weblog.prototype.filterResetElement = 'filter-reset';
 
-    Weblog.prototype.articleTemplate = '<article id="a{id}">\n  <a href="#{id}" class="title">\n    <span class="date">{date}</span>\n    <h2>{title}</h2>\n  </a>\n  <div id="c{id}" class="content">\n    <div class="info_block">\n      <div class="pretty_date">{date}</div>\n      <div class="author"><a href="http://about.me/nkoehring">nkoehring</a></div>\n      <ul id="t{id}" class="tags">{tags}</ul>\n    </div>\n  </div>\n  <div class="spinner">-</div>\n</article>';
+    Weblog.prototype.articleTemplate = '<article id="a{id}">\n  <a href="#{id}" class="title">\n    <span class="date">{date}</span>\n    <h2>{title}</h2>\n  </a>\n  <div id="c{id}" class="content">\n    <div class="info_block">\n      <div class="pretty_date">{date}</div>\n      <div class="author"><a href="http://about.me/nkoehring">nkoehring</a></div>\n      <ul id="t{id}" class="tags">{tags}</ul>\n    </div>\n  </div>\n  <div class="spinner">&nbsp;</div>\n</article>';
 
     Weblog.prototype.articleTagTemplate = '<li><a href="#{tag}">{tag}</a></li>';
 
@@ -154,7 +154,7 @@
       var articleElement, article_tags, t, template, _i, _len;
       articleElement = $("a" + stamp);
       if (articleElement != null) {
-        if (this.articles[stamp].content == null) {
+        if (this.options.autoload) {
           this.trigger("article-load", stamp);
         }
         return articleElement.show();
@@ -172,7 +172,10 @@
           date: prettyDate(new Date(parseInt(stamp) * 1000)),
           tags: article_tags
         });
-        return this.contentElement.append(template);
+        this.contentElement.append(template);
+        if (this.options.autoload) {
+          return $$("#a" + stamp + " .spinner").show;
+        }
       }
     };
 
@@ -204,6 +207,9 @@
 
     Weblog.prototype.openArticle = function(id) {
       var articleElement, contentElement;
+      if (!this.options.autoload) {
+        this.trigger("article-load", id);
+      }
       articleElement = $("a" + id);
       contentElement = $("c" + id);
       articleElement.addClass('open');
