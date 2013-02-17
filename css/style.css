@@ -203,6 +203,17 @@ blockquote {
 }
 blockquote p { margin:0;padding:0; }
 
+.theme-selector {
+  border-style:solid;
+  height: 0;
+  width: 0;
+  border-width: 0.75em;
+  float: right;
+  border-color: #2fc2ef #323a40 #a9a9a9 #252525;
+  margin-right: -1.4em;
+}
+body.dark .theme-selector { border-color: #fafafa #ede9e6 #33c #6f6e6d; }
+
 @keyframes rotate{ 100%{ transform: rotate(360deg); } }
 @-moz-keyframes rotate{ 100%{ -moz-transform: rotate(360deg); } }
 @-webkit-keyframes rotate{ 100%{ -webkit-transform: rotate(360deg); } }

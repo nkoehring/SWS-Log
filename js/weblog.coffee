@@ -232,5 +232,7 @@ class Weblog
 
 
 $(document).onReady ->
+  $$('.theme-selector').each "onClick", ->
+    $$('body').first().toggleClass('dark')
   window.weblog = new Weblog
  

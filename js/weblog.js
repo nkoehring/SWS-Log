@@ -303,6 +303,10 @@
   })();
 
   $(document).onReady(function() {
+    $$('.theme-selector').each("onClick", function() {
+      console.log("yay");
+      return $$('body').first().toggleClass('dark');
+    });
     return window.weblog = new Weblog;
   });
 
