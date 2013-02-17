@@ -136,8 +136,10 @@ article.autoload .spinner {
 article.success .spinner, article.failure .spinner { display: none; }
 article.success:after { content: "✓"; color: #EEE; font-weight: bold; }
 article.failure:after { content: "✗"; color: #F44; font-weight: bold; }
-body.dark article.success:after { color: #111; }
+body.dark article.success:after { color: #222; }
 body.dark article.failure:after { color: #800; }
+article.open.success:after { content: ""; }
+article.open.failure:after { content: ""; }
 
 article .title .date {
   display: inline-block;
