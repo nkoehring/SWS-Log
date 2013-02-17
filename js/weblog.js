@@ -303,9 +303,24 @@
   })();
 
   $(document).onReady(function() {
+    var body;
+    body = $$('body').first();
+    if (document.cookie === "theme=dark") {
+      body.addClass('dark');
+    }
     $$('.theme-selector').each("onClick", function() {
-      console.log("yay");
-      return $$('body').first().toggleClass('dark');
+      var cookie, expiration, future;
+      body.toggleClass('dark');
+      if (body.hasClass("dark")) {
+        expiration = new Date();
+        future = expiration.getTime() + 60 * 60 * 24 * 365 * 1000;
+        expiration.setTime(future);
+        cookie = "theme=dark; expires=" + (expiration.toGMTString());
+      } else {
+        cookie = "theme=; expires=" + (new Date().toGMTString());
+      }
+      document.cookie = cookie;
+      return console.log(cookie);
     });
     return window.weblog = new Weblog;
   });

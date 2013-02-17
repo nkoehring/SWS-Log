@@ -232,7 +232,22 @@ class Weblog
 
 
 $(document).onReady ->
+  body = $$('body').first()
+  ## theme selection via cookie
+  body.addClass('dark') if document.cookie == "theme=dark"
+  
   $$('.theme-selector').each "onClick", ->
-    $$('body').first().toggleClass('dark')
+    body.toggleClass('dark')
+    if body.hasClass "dark"
+      expiration = new Date()
+      future = expiration.getTime() + 60*60*24*365*1000   # expires next year 
+      expiration.setTime(future)
+      cookie = "theme=dark; expires=#{expiration.toGMTString()}"
+    else
+      cookie = "theme=; expires=#{new Date().toGMTString()}"
+
+    document.cookie = cookie
+    console.log cookie
+
   window.weblog = new Weblog
  
