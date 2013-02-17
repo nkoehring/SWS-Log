@@ -17,6 +17,5 @@ What does v2 better than v1?
 # Central filter functionality (for tags, etc).  ✓
 # No unnecessary reloading of articles.  ✓
 # Preloading of articles (can be turned on and off via settings).  ✓
-# Switchable themes for the lulz.
-
+# Switchable themes for the lulz.  ✓
 
