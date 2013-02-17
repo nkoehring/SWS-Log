@@ -16,7 +16,7 @@ body {
 
 body.dark {
   color: #FAFAFA;
-  background: black url(/img/cartographer.png) top left repeat scroll;
+  background: black url(/img/cartographer.png) top left repeat fixed;
 }
 
 header {
