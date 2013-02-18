@@ -219,7 +219,7 @@ class Weblog
     @bind 'filter-update',  @updateFilter
     window.addEventListener "hashchange", @checkFragment.bind(@)
 
-    Xhr.load 'articles.json',
+    Xhr.load 'articles.json?1361149743',
       onSuccess: (req)=>
         req.responseJSON = JSON.parse(req.responseText) unless req.responseJSON
         @articles = req.responseJSON.articles
