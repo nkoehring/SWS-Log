@@ -19,7 +19,7 @@ json["articles"].each_pair do |key, article|
   description = description[0...249] + '…' if description.length > 250
   rss.items << RubyRSS::Item.new(
     article["title"],
-    "https://log.koehr.in/#/#{key}",
+    "https://log.koehr.in/##{key}",
     description,
     Time.at(key.to_i)
   )
