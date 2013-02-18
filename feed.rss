@@ -4,17 +4,25 @@
 <title>koehrs webLog</title>
 <link>http://log.koehr.in</link>
 <description>Mein WebLog, mal persönlich, mal philosophisch, mal technisch.</description>
-<pubDate>2013-02-18 02:09:03 +0100</pubDate>
+<pubDate>2013-02-18 05:21:42 +0100</pubDate>
 <language>en-us</language>
 <ttl>60</ttl>
 
+<item>
+<title>WG Gesucht</title>
+<link>https://log.koehr.in/#1361161302</link>
+<description>Ich suche ab frühestens März einen tollen Ort in Berlin, an dem ich leben kann.
+Da ich nicht gern allein bin, würde ich dort gern zusammen mit zwei oder drei
+tollen Leuten leben.</description>
+<pubDate>2013-02-18 05:21:42 +0100</pubDate>
+<guid isPermaLink="true">https://log.koehr.in/#1361161302</guid>
+</item>
 <item>
 <title>Feed war kaputt. Sorry.</title>
 <link>https://log.koehr.in/#1361149743</link>
 <description>Falls es der eine Leser, den mein Blog wenn überhaupt nur hat nicht schon
 mitbekommen hat: Mit dem Rewrite &quot;meiner Blogengine&quot;:https://github.com/nkoehring/SWS-Log
-habe ich die Direkt-Links von /#/&lt;id&gt; auf /#&lt;id&gt; umgestellt. Das erschien mir
-weit lo…</description>
+habe ich die Direkt-Links von /#/&amp;lt;id&amp;gt; auf /#&amp;lt;id&amp;gt; umgestellt. Das erschien…</description>
 <pubDate>2013-02-18 02:09:03 +0100</pubDate>
 <guid isPermaLink="true">https://log.koehr.in/#1361149743</guid>
 </item>
