@@ -281,7 +281,7 @@
       this.bind('tags-list', this.filterForTag);
       this.bind('filter-update', this.updateFilter);
       window.addEventListener("hashchange", this.checkFragment.bind(this));
-      Xhr.load('articles.json?1361149743', {
+      Xhr.load('articles.json?1361161302', {
         onSuccess: function(req) {
           if (!req.responseJSON) {
             req.responseJSON = JSON.parse(req.responseText);
