@@ -19,4 +19,5 @@ What does v2 better than v1?
 # Preloading of articles (can be turned on and off via settings).  ✓
 # Switchable themes for the lulz.  ✓
 # Responsive themes.
+# Comments and Statistics via separate service.
 
