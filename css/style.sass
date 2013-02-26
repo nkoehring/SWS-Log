@@ -1,0 +1,310 @@
+@font-face
+  font-family: 'Antic'
+  font-style: normal
+  font-weight: 400
+  src: local("Antic"), local("Antic-Regular"), url('/css/antic.woff') format("woff")
+
+
+body
+  font: 18px / 1.5em "Antic", Cambria, Georgia, serif
+  margin: 2em 2.3em
+  color: #333
+  background-color: #FAFAFA
+  width: 960px
+  margin: auto
+  &.dark
+    color: #FAFAFA
+    background: black url(/img/cartographer.png) top left repeat fixed
+
+header
+  position: relative
+  display: block
+  background: black url(/img/typography.png) center no-repeat scroll
+  height: 120px
+  cursor: pointer
+
+body.dark header
+  background: black url(/img/slow_shutter_light.png) center no-repeat scroll
+  border-bottom: 1px solid #333333
+
+header
+  a.home-link
+    position: absolute
+    display: block
+    width: 100%
+    height: 100%
+    opacity: 0
+  menu
+    position: absolute
+    bottom: -1em
+    right: 20px
+    font-size: 0.9em
+    line-height: 1.1em
+    li
+      display: inline-block
+      padding: 2px 5px
+      background: #EEE
+      text-align: center
+      width: 130px
+      &#filter-reset
+        display: none
+        a
+          color: red
+      &:hover .effect_dummy
+        margin-top: 0px
+        color: inherit
+      .effect_dummy
+        margin-top: -16px
+        color: transparent
+        transition: all 0.2s ease-out
+        -moz-transition: all 0.2s ease-out
+        -webkit-transition: all 0.2s ease-out
+        -o-transition: all 0.2s ease-out
+
+body.dark header menu li
+  background: #3A3A3A
+  /*
+   *background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD));
+   *background: -moz-linear-gradient(top, #FFF, #DDD);
+  &#filter-reset a
+    color: #FFA300
+
+#filter
+  display: none
+
+menu#tags
+  display: block
+
+#filter, menu#tags
+  max-width: 960px
+  text-align: right
+  margin-top: .5em
+  padding-left: 0
+
+#filter, menu#tags:before
+  color: #AAA
+  font-weight: bold
+  font-size: 2em
+  vertical-align: middle
+
+#filter
+  &:before
+    content: 'filtered for "'
+  &.tag:before
+    content: 'filtered for tag "'
+  &:after
+    content: '" '
+
+menu#tags
+  &:before
+    content: "tags: "
+  &.filtered:before
+    content: "remaining tags: "
+  li
+    word-spacing: -0.25em
+    display: inline-block
+    margin: 0 0.2em
+
+h1
+  display: block
+  font-size: 1.5em
+  border-bottom: 1px solid #aaaaaa
+
+h2
+  display: block
+  font-size: 1.2em
+  margin-top: 2em
+  margin-bottom: 0
+
+h3
+  font-size: 1.1em
+  font-weight: bold
+
+a
+  color: #33C
+  text-decoration: none
+  &:visited
+    color: #337
+  &:hover
+    color: #33F
+
+body.dark a
+  color: #2FC2EF
+
+article
+  position: relative
+  border-bottom: 1px solid #aaaaaa
+
+body.dark article
+  border-bottom: 1px solid #333333
+
+article
+  .spinner, &.success:after, &.failure:after
+    position: absolute
+    top: 60%
+    right: 0
+    width: 1em
+    height: 1em
+    margin: 0.1em
+    background: transparent
+  &.autoload .spinner
+    border: 2px dotted #aaaaaa
+    border-radius: 1em
+    color: transparent
+    animation: rotate 2s infinite linear
+    -moz-animation: rotate 2s infinite linear
+    -webkit-animation: rotate 2s infinite linear
+    -o-animation: rotate 2s infinite linear
+    -ms-animation: rotate 2s infinite linear
+  &.success .spinner, &.failure .spinner
+    display: none
+  &.success:after
+    content: "✓"
+    color: #EEE
+    font-weight: bold
+  &.failure:after
+    content: "✗"
+    color: #F44
+    font-weight: bold
+
+body.dark article
+  &.success:after
+    color: #222
+  &.failure:after
+    color: #800
+
+article
+  &.open
+    &.success:after, &.failure:after
+      content: ""
+  .title
+    .date
+      display: inline-block
+      width: 7em
+      margin-right: .5em
+      color: #AAA
+      text-align: right
+    h2
+      display: inline-block
+  .content
+    display: none
+  &.open
+    .content
+      >
+        p
+          width: 540px
+          padding-bottom: 0.2em
+          &.error
+            font-weight: bold
+        blockquote
+          width: 460px
+      &:first-letter
+        float: left
+        font-size: 3em
+        line-height: 0.76em
+        padding: 0.12em 0.12em 0 0
+    position: relative
+    overflow: hidden
+    border-bottom: none
+    padding: 1em 3em
+    margin-top: 1em
+    background: #fafafa url(/img/ricepaper.jpg) top left repeat scroll
+    border-radius: 5px
+    border: 5px dotted rgba(0, 0, 0, 0.05)
+    .title
+      h2
+        font-size: 2em
+        text-align: center
+        margin-bottom: 1em
+      .date
+        display: none
+    .info_block
+      display: inline-block
+      float: right
+      width: 280px
+      margin-left: 20px
+      color: #AAA
+      font-weight: bold
+      font-size: 1.8em
+
+body.dark article.open
+  //background: #323A40 url(/img/cartographer.png) top left repeat scroll;
+  background: #323A40
+  border: 5px dotted rgba(255, 255, 255, 0.1)
+
+article .info_block
+  .pretty_date:before
+    content: "created"
+    margin-right: 0.333em
+  .author:before
+    content: "by"
+    margin-right: 0.333em
+  .tags
+    &:before
+      content: "in"
+      margin-right: 0.333em
+    margin: 0
+    padding: 0
+    li
+      display: inline-block
+      padding: 0 0.2em 0 0
+      &:after
+        content: ","
+      &:last-child:after
+        content: ""
+
+table
+  background: #EEE
+  padding: 0.5em
+
+td
+  border: 1px dotted #aaaaaa
+  padding: 0 1em
+
+.small
+  font-size: 0.75em
+
+blockquote
+  background: transparent url(/img/quote.png) left top no-repeat scroll
+  margin: 0
+  margin-top: -1em
+  padding: 1em 0 0 80px
+  p
+    margin: 0
+    padding: 0
+
+.theme-selector
+  border-style: solid
+  height: 0
+  width: 0
+  border-width: 0.75em
+  float: right
+  border-color: #2fc2ef #323a40 darkgrey #252525
+  margin-right: -1.4em
+
+body.dark .theme-selector
+  border-color: #fafafa #ede9e6 #3333cc #6f6e6d
+
+@keyframes rotate
+  100%
+    transform: rotate(360deg)
+
+
+@-moz-keyframes rotate
+  100%
+    -moz-transform: rotate(360deg)
+
+
+@-webkit-keyframes rotate
+  100%
+    -webkit-transform: rotate(360deg)
+
+
+@-o-keyframes rotate
+  100%
+    -o-transform: rotate(360deg)
+
+
+@-ms-keyframes rotate
+  100%
+    -ms-transform: rotate(360deg)

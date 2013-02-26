@@ -1,0 +1,44 @@
+!!! 5
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %title
+    %meta{:content => "Norman Köhring", :name => "author"}
+    %meta{:content => "", :name => "DC.title"}
+    / GeoURL
+    %meta{:content => "51.3333, 12.4167", :name => "ICBM"}
+    %meta{:content => "51.3333; 12.4167", :name => "geo.position"}
+    %meta{:content => "DE", :name => "geo.region"}
+    %link{:href => "https://about.me/nkoehring", :rel => "author"}
+    %link{:href => "https://log.koehr.in/feed.rss", :rel => "alternate", :title => "RSS", :type => "application/rss+xml"}
+    %link{:href => "/css/style.css", :rel => "stylesheet"}
+    %script{:src => "/js/tracking.js"}
+    %script{:src => "/js/right.js"}
+    %script{:src => "/js/lib.js"}
+    %script{:src => "/js/weblog.js?v=1"}
+  %body
+    %header
+      .theme-selector{:title => "switch between bright and dark theme"}
+      %a.home-link{:href => "#"} home
+      %menu
+        %li
+          %a{:href => "#about"}
+            %div about
+            .effect_dummy über mich
+        %li
+          %a{:href => "https://koehr.in", :target => "_blank"}
+            %div koehr.in
+            .effect_dummy Meine Homepage
+        %li#filter-reset
+          %a{:href => "#"}
+            %div reset filter
+            .effect_dummy Artikel nicht filtern
+    #filter
+    %menu#tags
+    #content
+      %h1
+        You need to enable JavaScript to view this page, sorry.
+        %a.small{:href => "/why_javascript.html"} But why?!
+      %h1
+        Entschuldigung, du musst JavaScript aktivieren um diese Seite zu sehen.
+        %a.small{:href => "/warum_javascript.html"} Aber warum?!

@@ -3,4 +3,5 @@ Session.vim
 js/*.old.js
 *.swp
 *.swo
+.sass-cache
 
