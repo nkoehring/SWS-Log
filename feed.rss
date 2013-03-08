@@ -4,10 +4,17 @@
 <title>koehrs webLog</title>
 <link>http://log.koehr.in</link>
 <description>Mein WebLog, mal persönlich, mal philosophisch, mal technisch.</description>
-<pubDate>2013-02-26 02:35:34 +0100</pubDate>
+<pubDate>2013-03-08 09:21:02 +0100</pubDate>
 <language>en-us</language>
 <ttl>60</ttl>
 
+<item>
+<title>so richtig sichere Passworthashes für Linux</title>
+<link>https://log.koehr.in/#1362730861</link>
+<description>In /etc/pam.d/passwd (Arch Linux):</description>
+<pubDate>2013-03-08 09:21:01 +0100</pubDate>
+<guid isPermaLink="true">https://log.koehr.in/#1362730861</guid>
+</item>
 <item>
 <title>Schon erste Konkurrenz für „Project Glass“?</title>
 <link>https://log.koehr.in/#1361810760</link>
