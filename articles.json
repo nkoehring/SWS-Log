@@ -232,6 +232,14 @@
         "linux",
         "security"
       ]
+    },
+    "1392920214": {
+      "title": "I am my OpenID provider",
+      "tags": [
+        "authentication",
+        "web",
+        "security"
+      ]
     }
   },
   "options": {
