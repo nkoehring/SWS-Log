@@ -83,10 +83,12 @@ All you need now is an identity file. A well documented example is included:
 It needs two lines. Your identity (your domain name for example) and your MD5
 hashed password:
 
+<pre>
 <code>
 identity="http://homepage.tld/"
 pass="47635cbe1a0ee7f472ff202955bf9b34"
 </code>
+</pre>
 
 If you – just like in my examples – don't want to put that /simpleid
 everywhere, you also need to delegate just like I described above. Here is,
