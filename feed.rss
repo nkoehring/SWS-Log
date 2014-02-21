@@ -4,10 +4,18 @@
 <title>koehrs webLog</title>
 <link>http://log.koehr.in</link>
 <description>Mein WebLog, mal persönlich, mal philosophisch, mal technisch.</description>
-<pubDate>2013-03-08 09:21:02 +0100</pubDate>
+<pubDate>2014-02-21 19:55:33 +0100</pubDate>
 <language>en-us</language>
 <ttl>60</ttl>
 
+<item>
+<title>I am my OpenID provider</title>
+<link>https://log.koehr.in/#1392920214</link>
+<description>Starting today I am my own OpenID provider. Why that is a cool thing and how I
+managed to do it will be explained in this article.</description>
+<pubDate>2014-02-20 19:16:54 +0100</pubDate>
+<guid isPermaLink="true">https://log.koehr.in/#1392920214</guid>
+</item>
 <item>
 <title>so richtig sichere Passworthashes für Linux</title>
 <link>https://log.koehr.in/#1362730861</link>
@@ -139,7 +147,7 @@ neues tolles Produkt, dass sie alle unbedingt haben müssen.</description>
 <title>Die Nächte sind nicht für die Menge gemacht.</title>
 <link>https://log.koehr.in/#1317175941</link>
 <description>Es ist mal wieder eine dieser Nächte, in der man irgendwas fertig bekommen will und nicht bekommt,
-weil man irgendwann anfängt, vom Dubstep oder D'n'B auf
+weil man irgendwann anfängt, vom Dubstep oder D&#39;n&#39;B auf
 &quot;viel zu bewegende Musik&quot;:http://www.youtube.com/watch?v=CZMBTuSQycA umzusteigen.</description>
 <pubDate>2011-09-28 04:12:21 +0200</pubDate>
 <guid isPermaLink="true">https://log.koehr.in/#1317175941</guid>
@@ -187,14 +195,14 @@ wunderschönen Antlitz, so friedlich und doch geschäftig. W…</description>
 <item>
 <title>just as I thought</title>
 <link>https://log.koehr.in/#1276385723</link>
-<description>…I cannot sleep. That's what happens if you think to much about the badness in this world. Sometimes I wish I have no empathy at all. Must be a way easier life.</description>
+<description>…I cannot sleep. That&#39;s what happens if you think to much about the badness in this world. Sometimes I wish I have no empathy at all. Must be a way easier life.</description>
 <pubDate>2010-06-13 01:35:23 +0200</pubDate>
 <guid isPermaLink="true">https://log.koehr.in/#1276385723</guid>
 </item>
 <item>
 <title>Webcomics</title>
 <link>https://log.koehr.in/#1276816036</link>
-<description>I am a huge fan of webcomics. Who isn't? So I thought about made my favorites public.</description>
+<description>I am a huge fan of webcomics. Who isn&#39;t? So I thought about made my favorites public.</description>
 <pubDate>2010-06-18 01:07:16 +0200</pubDate>
 <guid isPermaLink="true">https://log.koehr.in/#1276816036</guid>
 </item>
