@@ -1,33 +1,38 @@
-Starting today I am my own OpenID provider. Why that is a cool thing and how I managed to do it will
-be explained in this article.
+Starting today I am my own OpenID provider. Why that is a cool thing and how I
+managed to do it will be explained in this article.
 
 h2. OpenID?
 
-OpenID is a standard that allows authentication via third-party services. So the authentication is
-not done on the side of the used service, just like OAuth.
+OpenID is a standard that allows authentication via third-party services. So
+the authentication is not done on the side of the used service, just like
+OAuth.
 
-The big difference: Rather than services beeing tied to one OAuth authenticator (like "Login with
-your Google/Amazon/Twitter account"), OAuth is independet. Instead having a couple of login buttons
-you just need one. An OpenID is an URL and can resolved the same way. That is because OpenID doesn't
-offer any profile of some specific service but an independent one. If a service especially asks for
-your Facebook account, it probably wants way more than just offer you a simple way of authentication.
+The big difference: Rather than services beeing tied to one OAuth authenticator
+(like "Login with your Google/Amazon/Twitter account"), OAuth is independet.
+Instead having a couple of login buttons you just need one. An OpenID is an URL
+and can resolved the same way. That is because OpenID doesn't offer any profile
+of some specific service but an independent one. If a service especially asks
+for your Facebook account, it probably wants way more than just offer you a
+simple way of authentication.
 
 
 h2. You probably already have one.
 
-Just like XMPP (a.k.a. Jabber), which sneakes in everywhere, you probably also have an OAuth provider
-already. Google, Yahoo, LiveJournal, Blogger, Flickr, MySpace, WordPress, AOL, .. they all offer you
-OpenID authentication. See "Get an OpenID":http://openid.net/get-an-openid/ for details on that
-topic.
+Just like XMPP (a.k.a. Jabber), which sneakes in everywhere, you probably also
+have an OAuth provider already. Google, Yahoo, LiveJournal, Blogger, Flickr,
+MySpace, WordPress, AOL, .. they all offer you OpenID authentication. See "Get
+an OpenID":http://openid.net/get-an-openid/ for details on that topic.
 
 
 h2. Cool, so why rolling out your own provider?
 
-Simple! I don't want Google or any other company to be my authenticator. They already know way to
-much and I want to be in control of my data! Also it is nice to have anything unified with one single
-URL. With everything I mean Website, Email, Jabber and now finally also Authentication.
+Simple! I don't want Google or any other company to be my authenticator. They
+already know way to much and I want to be in control of my data! Also it is
+nice to have anything unified with one single URL. With everything I mean
+Website, Email, Jabber and now finally also Authentication.
 
-There are two ways. The most simple way – delegation – is again dependent on an external provider.
+There are two ways. The most simple way – delegation – is again dependent on an
+external provider.
 
 <pre>
 <code>
@@ -37,14 +42,15 @@ There are two ways. The most simple way – delegation – is again dependent on
   <link rel="openid2.local_id" href="http://homepage.tld" />
   <meta http-equiv="X-XRDS-Location"
         content="http://openidprovider.tld/xrds?username=homepage.tld" />
-
 </code>
 </pre>
 
 Put this into your homepages markup at http://homepage.tld and it will delegate
-your domain as an id to your provider at http://openidprover.tld/server. Simple!
+your domain as an id to your provider at http://openidprover.tld/server.
+Simple!
 
 But I still want to be my own provider, because I'm a total privacy zealot!
+
 
 h2. Become your own OpenID provider.
 
