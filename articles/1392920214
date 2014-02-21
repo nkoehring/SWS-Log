@@ -37,9 +37,64 @@ There are two ways. The most simple way – delegation – is again dependent on
   <link rel="openid2.local_id" href="http://homepage.tld" />
   <meta http-equiv="X-XRDS-Location"
         content="http://openidprovider.tld/xrds?username=homepage.tld" />
+
 </code>
 </pre>
 
-Put this into your homepages markup at http://homepage.tld and it will delegate your domain as an id
-to your provider at http://openidprover.tld/server. Simple! But I still want to be my own provider,
-because I'm a total privacy zealot.
+Put this into your homepages markup at http://homepage.tld and it will delegate
+your domain as an id to your provider at http://openidprover.tld/server. Simple!
+
+But I still want to be my own provider, because I'm a total privacy zealot!
+
+h2. Become your own OpenID provider.
+
+Thanks to some nice people, it is super easy to become your own provider. Of
+course you need some webspace and knowledge about its handling.
+
+Rather than RTFM or using some fancy library to program the whole thing myself
+I just decided to pick some ready made OpenID provider. The first results
+contained "SimpleID":http://simpleid.sourceforge.net/. What made it my choice
+was, that there is a Ubuntu package for it, so installing it on my webserver
+was a piece of cake.
+
+As I am used to, the SimpleID package comes nicely preconfigured and just works
+with my Apache2 setup. Without configuration, the service will be located at
+http://homepage.tld/simpleid. If you want to change that, just look into the
+well documented configuration file in /etc/simpleid/. A symlink to the Apache
+configuration file is located here, too.
+
+All you need now is an identity file. A well documented example is included:
+
+<pre>
+<code>
+%> sudo -s
+#> cp /usr/share/simpleid/sample/example.identity.dist /var/lib/simpleid/identities/homepage.tld.identity
+#> $EDITOR /var/lib/simpleid/identities/homepage.tld.identity
+
+</code>
+</pre>
+
+It needs two lines. Your identity (your domain name for example) and your MD5
+hashed password:
+
+<code>
+identity="http://homepage.tld/"
+pass="47635cbe1a0ee7f472ff202955bf9b34"
+</code>
+
+If you – just like in my examples – don't want to put that /simpleid
+everywhere, you also need to delegate just like I described above. Here is,
+what I have on my domain:
+
+<pre>
+<code>
+<meta http-equiv="X-XRDS-Location" content="https://koehr.in/openid/xrds/koehr" />
+<link rel="openid.server" href="https://koehr.in/openid/" />
+<link rel="openid2.provider" href="https://koehr.in/openid/" />
+</code>
+</pre>
+
+As you can see, you don't need to set your ID again.
+
+Thats it! You can login at http://homepage.tld/simpleid to check your settings
+and manage your connections.
