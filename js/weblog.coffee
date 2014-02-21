@@ -143,7 +143,7 @@ class Weblog
       contentElement = $("c#{id}")
       Xhr.load "articles/#{id}",
         onSuccess: (req)=>
-          @articles[id].content = textile(req.responseText)
+          @articles[id].content = textile(req.responseText, {breaks: false})
           contentElement.append @articles[id].content
           articleElement.removeClass('failure')
           articleElement.addClass('success')
