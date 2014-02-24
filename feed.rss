@@ -4,10 +4,19 @@
 <title>koehrs webLog</title>
 <link>http://log.koehr.in</link>
 <description>Mein WebLog, mal persönlich, mal philosophisch, mal technisch.</description>
-<pubDate>2014-02-21 19:55:33 +0100</pubDate>
+<pubDate>2014-02-24 15:27:27 +0100</pubDate>
 <language>en-us</language>
 <ttl>60</ttl>
 
+<item>
+<title>neovim</title>
+<link>https://log.koehr.in/#1393251881</link>
+<description>One project I&#39;m totally looking forward to is Neovim. Beeing totally in love with VIM as editor is
+one thing, but this love is not blind! VIM is now more than twenty years old, also supporting legacy
+systems is nice and all but lets face it: at leas…</description>
+<pubDate>2014-02-24 15:24:41 +0100</pubDate>
+<guid isPermaLink="true">https://log.koehr.in/#1393251881</guid>
+</item>
 <item>
 <title>I am my OpenID provider</title>
 <link>https://log.koehr.in/#1392920214</link>
